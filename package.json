@@ -8,10 +8,10 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start": "npx cross-env NODE_ENV=dev nest start",
+    "start:dev": "npx cross-env NODE_ENV=dev nest start --watch",
+    "start:debug": "npx cross-env NODE_ENV=dev nest start --debug --watch",
+    "start:prod": "npx cross-env NODE_ENV=prod node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -27,6 +27,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@nestjsi/class-validator": "^0.2.2",
     "class-validator": "^0.14.0",
+    "dotenv": "^16.0.3",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
