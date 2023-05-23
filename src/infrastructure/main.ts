@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { from } from 'rxjs';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -16,4 +17,4 @@ async function bootstrap() {
   });
   await app.listen(3000);
 }
-bootstrap();
+from(bootstrap()).subscribe();

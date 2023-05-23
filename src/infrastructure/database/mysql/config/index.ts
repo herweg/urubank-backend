@@ -1,2 +1,1 @@
-
-export * from './mongo.service.config';
+export * from './mysql.service.config';
