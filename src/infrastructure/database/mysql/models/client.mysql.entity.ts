@@ -16,6 +16,12 @@ export class ClientMysqlEntity extends ClientDomainEntityBase {
   status: number;
 
   @Column()
+  phone: string;
+
+  @Column()
+  departament: string;
+
+  @Column()
   document: string;
 
   @Column()

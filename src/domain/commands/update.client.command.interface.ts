@@ -28,6 +28,20 @@ export interface IUpdateClientCommand {
    */
   status: number;
   /**
+   * Phone of the client.
+   *
+   * @type {string}
+   * @memberof IUpdateClientCommand
+   */
+  phone: string;
+  /**
+   * Departament of the client.
+   *
+   * @type {string}
+   * @memberof IUpdateClientCommand
+   */
+  departament: string;
+  /**
    * Document of the client.
    *
    * @type {string}

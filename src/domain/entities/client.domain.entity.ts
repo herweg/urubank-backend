@@ -38,6 +38,20 @@ export class ClientDomainEntityBase implements IClientEntity {
    */
   status: number;
   /**
+   * Phone of the client.
+   *
+   * @type {string}
+   * @memberof ClientDomainEntityBase
+   */
+  phone: string;
+  /**
+   * Departament of the client.
+   *
+   * @type {string}
+   * @memberof ClientDomainEntityBase
+   */
+  departament: string;
+  /**
    * Document of the client.
    *
    * @type {string}
@@ -69,6 +83,8 @@ export class ClientDomainEntityBase implements IClientEntity {
     if (_data?.typeClient) this.typeClient = _data.typeClient;
     if (_data?.fullName) this.fullName = _data.fullName;
     if (_data?.status) this.status = _data.status;
+    if (_data?.phone) this.phone = _data.phone;
+    if (_data?.departament) this.departament = _data.departament;
     if (_data?.document) this.document = _data.document;
     this.createdAt = Date.now();
     this.completedAt = 0;

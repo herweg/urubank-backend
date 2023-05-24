@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ClientsMysqlService } from '../database/mysql/services';
+import { ClientsMongoService } from '../database/mongodb/services';
 
 @Injectable()
-export class ClientsService extends ClientsMysqlService {}
+export class ClientsService extends ClientsMongoService {}

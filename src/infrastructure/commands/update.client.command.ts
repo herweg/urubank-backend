@@ -64,6 +64,32 @@ export class UpdateClientCommand implements IUpdateClientCommand {
   @IsNotEmptyString()
   @IsSingleLine()
   /**
+   * Phone of the client.
+   *
+   * @type {string}
+   * @memberof UpdateClientCommand
+   */
+  phone: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
+   * Departament of the client.
+   *
+   * @type {string}
+   * @memberof UpdateClientCommand
+   */
+  departament: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
    * Document of the client.
    *
    * @type {string}

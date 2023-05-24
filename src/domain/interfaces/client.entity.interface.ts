@@ -34,6 +34,20 @@ export interface IClientEntity {
    */
   status: number;
   /**
+   * Phone of the client.
+   *
+   * @type {string}
+   * @memberof IClientEntity
+   */
+  phone: string;
+  /**
+   * Departament of the client.
+   *
+   * @type {string}
+   * @memberof IClientEntity
+   */
+  departament: string;
+  /**
    * Document of the client.
    *
    * @type {string}

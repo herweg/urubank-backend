@@ -21,6 +21,20 @@ export interface ICreateClientCommand {
    */
   status: number;
   /**
+   * Phone of the client.
+   *
+   * @type {string}
+   * @memberof ICreateClientCommand
+   */
+  phone: string;
+  /**
+   * Departament of the client.
+   *
+   * @type {string}
+   * @memberof ICreateClientCommand
+   */
+  departament: string;
+  /**
    * Document of the client.
    *
    * @type {string}

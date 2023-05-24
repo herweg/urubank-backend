@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const swagger = new DocumentBuilder()
     .setTitle('Urubank API')
-    .setDescription('Service to manage customers')
+    .setDescription('Service to manage clients')
     .setVersion('1')
     .build();
 

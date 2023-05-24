@@ -50,6 +50,32 @@ export class CreateClientCommand implements ICreateClientCommand {
   @IsNotEmptyString()
   @IsSingleLine()
   /**
+   * Phone of the client.
+   *
+   * @type {string}
+   * @memberof CreateClientCommand
+   */
+  phone: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
+   * Departament of the client.
+   *
+   * @type {string}
+   * @memberof CreateClientCommand
+   */
+  departament: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
    * Document of the client.
    *
    * @type {string}
