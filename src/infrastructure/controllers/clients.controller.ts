@@ -38,6 +38,14 @@ import { ClientDomainEntityBase } from '../../domain/entities';
 export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 
+  @Post('/zenvia')
+  zenviaTest(
+  @Body() data: any,
+  ): Promise<any> {
+    console.log(data)
+    return Promise.resolve({ message: 'data recived' })
+  }
+  
   @ApiResponse({ type: CreateClientResponse })
   @Post('/create')
   createClient(
