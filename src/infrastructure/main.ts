@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   //CORS
-  app.enableCors()
+  app.enableCors();
 
   const swagger = new DocumentBuilder()
     .setTitle('Urubank API')
