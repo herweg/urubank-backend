@@ -6,7 +6,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   dotenv.config({ path: 'environments/.env.' + process.env.NODE_ENV });
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create(AppModule);
 
   const swagger = new DocumentBuilder()
     .setTitle('Urubank API')
