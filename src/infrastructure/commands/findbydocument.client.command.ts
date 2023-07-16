@@ -16,7 +16,7 @@ export class FindByDocumentClientCommand
    * Document for find.
    *
    * @type {string}
-   * @memberof FindByIdClientCommand
+   * @memberof FindByDocumentClientCommand
    */
   document: string;
 }
