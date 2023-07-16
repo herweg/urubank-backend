@@ -18,6 +18,6 @@ async function bootstrap() {
   SwaggerModule.setup('', app, document, {
     swaggerOptions: { defaultModelsExpandDepth: -1 },
   });
-  await app.listen(3000);
+  await app.listen(80);
 }
 from(bootstrap()).subscribe();
