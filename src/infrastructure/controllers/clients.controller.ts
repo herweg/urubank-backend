@@ -14,12 +14,14 @@ import {
   CreateClientUseCase,
   DeleteClientUseCase,
   FindAllClientUseCase,
+  FindByDocumentClientUseCase,
   FindByIdClientUseCase,
   UpdateClientUseCase,
 } from '../../application/use-cases';
 import {
   CreateClientCommand,
   DeleteClientCommand,
+  FindByDocumentClientCommand,
   FindByIdClientCommand,
   UpdateClientCommand,
 } from '../commands';
@@ -27,12 +29,12 @@ import {
   CreateClientResponse,
   DeleteClientResponse,
   FindAllClientResponse,
+  FindByDocumentClientResponse,
   FindByIdClientResponse,
   UpdateClientResponse,
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
 import { ClientDomainEntityBase } from '../../domain/entities';
-
 @ApiTags('clients')
 @Controller('/clients')
 export class ClientsController {
@@ -77,6 +79,15 @@ export class ClientsController {
     @Body() command: FindByIdClientCommand,
   ): Observable<IResponse<ClientDomainEntityBase>> {
     const useCase = new FindByIdClientUseCase(this.clientsService);
+    return useCase.execute(command);
+  }
+
+  @ApiResponse({ type: FindByDocumentClientResponse })
+  @Put('/findbydocument')
+  findClientByDocument(
+    @Body() command: FindByDocumentClientCommand,
+  ): Observable<IResponse<ClientDomainEntityBase>> {
+    const useCase = new FindByDocumentClientUseCase(this.clientsService);
     return useCase.execute(command);
   }
 

@@ -129,4 +129,25 @@ export class ClientsMongoRepository
       }),
     );
   }
+
+  /**
+   * It finds a client by its document and returns it as an observable
+   * @param {string} document - string - the document of the client to find
+   * @returns Observable<ClientMongoEntity>
+   */
+  findByDocument(document: string): Observable<ClientMongoEntity> {
+    return from(this.repository.findOneBy({ document: document })).pipe(
+      map((value) => {
+        if (value == null) {
+          throw new NotFoundException(
+            `Error: not found client with document: ${document}`,
+          );
+        }
+        return value;
+      }),
+      catchError((error: Error) => {
+        throw error;
+      }),
+    );
+  }
 }

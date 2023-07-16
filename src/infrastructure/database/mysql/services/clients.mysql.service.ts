@@ -79,4 +79,15 @@ export class ClientsMysqlService implements IClientsService<ClientMysqlEntity> {
   findById(id: string): Observable<ClientMysqlEntity> {
     return this.repository.findById(id);
   }
+
+  /**
+   * "Find a client by its document."
+   *
+   * The function is defined as an Observable of ClientMysqlEntity
+   * @param {string} document - The document of the client to find.
+   * @returns Observable<ClientMysqlEntity>
+   */
+  findByDocument(document: string): Observable<ClientMysqlEntity> {
+    return this.repository.findByDocument(document);
+  }
 }

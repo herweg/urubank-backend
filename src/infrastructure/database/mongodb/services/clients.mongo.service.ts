@@ -79,4 +79,15 @@ export class ClientsMongoService implements IClientsService<ClientMongoEntity> {
   findById(id: string): Observable<ClientMongoEntity> {
     return this.repository.findById(id);
   }
+
+  /**
+   * "Find a client by its document."
+   *
+   * The function is defined as an Observable of ClientMongoEntity
+   * @param {string} document - The document of the client to find.
+   * @returns Observable<ClientMongoEntity>
+   */
+  findByDocument(document: string): Observable<ClientMongoEntity> {
+    return this.repository.findByDocument(document);
+  }
 }

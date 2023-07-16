@@ -9,4 +9,5 @@ export interface IClientsService<
   remove(id: string): Observable<boolean>;
   findAll(): Observable<T[]>;
   findById(id: string): Observable<T>;
+  findByDocument(document: string): Observable<T>;
 }

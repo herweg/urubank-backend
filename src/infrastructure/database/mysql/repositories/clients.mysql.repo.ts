@@ -129,4 +129,25 @@ export class ClientsMysqlRepository
       }),
     );
   }
+
+  /**
+   * It finds a client by its document and returns it as an observable
+   * @param {string} document - string - the document of the client to find
+   * @returns Observable<ClientMysqlEntity>
+   */
+  findByDocument(document: string): Observable<ClientMysqlEntity> {
+    return from(this.repository.findOneBy({ document: document })).pipe(
+      map((value) => {
+        if (value == null) {
+          throw new NotFoundException(
+            `Error: not found client with document: ${document}`,
+          );
+        }
+        return value;
+      }),
+      catchError((error: Error) => {
+        throw error;
+      }),
+    );
+  }
 }
