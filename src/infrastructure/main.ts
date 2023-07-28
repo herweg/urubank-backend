@@ -11,7 +11,7 @@ async function bootstrap() {
 
   const swagger = new DocumentBuilder()
     .setTitle('Urubank API')
-    .setDescription('Service to manage users')
+    .setDescription('Service to manage users, financiers, campaigns and leads')
     .setVersion('1')
     .build();
 
