@@ -7,10 +7,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   dotenv.config({ path: 'environments/.env.' + process.env.NODE_ENV });
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
 
   const swagger = new DocumentBuilder()
     .setTitle('Urubank API')
-    .setDescription('Service to manage clients')
+    .setDescription('Service to manage users')
     .setVersion('1')
     .build();
 

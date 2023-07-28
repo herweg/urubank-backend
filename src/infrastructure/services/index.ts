@@ -1,1 +1,16 @@
-export * from './clients.service';
+import { UsersService } from './users.service';
+import { FinanciersService } from './financiers.service';
+import { CampaignsService } from './campaigns.service';
+import { LeadsService } from './leads.service';
+
+export const Services = [
+  UsersService,
+  FinanciersService,
+  CampaignsService,
+  LeadsService,
+];
+
+export * from './users.service';
+export * from './financiers.service';
+export * from './campaigns.service';
+export * from './leads.service';
