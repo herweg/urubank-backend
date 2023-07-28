@@ -32,7 +32,7 @@ import {
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
 import { CampaignDomainEntityBase } from '../../domain/entities';
-@ApiTags('campaigns')
+@ApiTags('Campaigns')
 @Controller('/campaigns')
 export class CampaignsController {
   constructor(private readonly campaignsService: CampaignsService) {}

@@ -32,7 +32,7 @@ import {
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
 import { LeadDomainEntityBase } from '../../domain/entities';
-@ApiTags('leads')
+@ApiTags('Leads')
 @Controller('/leads')
 export class LeadsController {
   constructor(private readonly leadsService: LeadsService) {}

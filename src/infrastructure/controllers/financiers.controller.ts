@@ -32,7 +32,7 @@ import {
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
 import { FinancierDomainEntityBase } from '../../domain/entities';
-@ApiTags('financiers')
+@ApiTags('Financiers')
 @Controller('/financiers')
 export class FinanciersController {
   constructor(private readonly financiersService: FinanciersService) {}

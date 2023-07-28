@@ -35,7 +35,7 @@ import {
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
 import { UserDomainEntityBase } from '../../domain/entities';
-@ApiTags('users')
+@ApiTags('Users')
 @Controller('/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
