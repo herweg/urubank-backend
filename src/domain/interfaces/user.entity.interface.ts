@@ -13,13 +13,6 @@ export interface IUserEntity {
    */
   id?: string;
   /**
-   * Type of the user.
-   *
-   * @type {number}
-   * @memberof IUserEntity
-   */
-  typeUser: number;
-  /**
    * Full name of the user.
    *
    * @type {string}

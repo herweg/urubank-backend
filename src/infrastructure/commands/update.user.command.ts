@@ -1,11 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IUpdateUserCommand } from '../../domain/commands/update.user.command.interface';
-import {
-  IsNotBlankString,
-  IsNotEmptyString,
-  MinMax,
-} from '@nestjsi/class-validator';
-import { IsString, IsUUID, IsNumber, IsArray } from 'class-validator';
+import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
+import { IsString, IsUUID, IsArray } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
 export class UpdateUserCommand implements IUpdateUserCommand {
@@ -22,17 +18,6 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @memberof UpdateUserCommand
    */
   id: string;
-
-  @ApiProperty()
-  @IsNumber()
-  @MinMax(1, 3)
-  /**
-   * Type of the user (customer, employed, admin).
-   *
-   * @type {number}
-   * @memberof UpdateUserCommand
-   */
-  typeUser: number;
 
   @ApiProperty()
   @IsString()

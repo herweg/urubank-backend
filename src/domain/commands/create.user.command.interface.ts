@@ -1,12 +1,5 @@
 export interface ICreateUserCommand {
   /**
-   * Type of the user.
-   *
-   * @type {number}
-   * @memberof ICreateUserCommand
-   */
-  typeUser: number;
-  /**
    * Full name of the user.
    *
    * @type {string}

@@ -11,9 +11,6 @@ export class UserMongoEntity extends UserDomainEntityBase {
   id: string;
 
   @Column()
-  typeUser: number;
-
-  @Column()
   fullName: string;
 
   @Column()

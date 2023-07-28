@@ -17,13 +17,6 @@ export class UserDomainEntityBase implements IUserEntity {
    */
   id?: string;
   /**
-   * Type of the user (customer, employed, admin).
-   *
-   * @type {number}
-   * @memberof UserDomainEntityBase
-   */
-  typeUser: number;
-  /**
    * Full name of the user.
    *
    * @type {string}
@@ -101,7 +94,6 @@ export class UserDomainEntityBase implements IUserEntity {
    */
   constructor(_data?: IUserEntity) {
     this.id = _data?.id ? _data.id : uuid();
-    if (_data?.typeUser) this.typeUser = _data.typeUser;
     if (_data?.fullName) this.fullName = _data.fullName;
     if (_data?.phone) this.phone = _data.phone;
     if (_data?.document) this.document = _data.document;

@@ -1,25 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ICreateUserCommand } from '../../domain/commands/create.user.command.interface';
-import { IsArray, IsNumber, IsString } from 'class-validator';
-import {
-  IsNotBlankString,
-  IsNotEmptyString,
-  MinMax,
-} from '@nestjsi/class-validator';
+import { IsArray, IsString } from 'class-validator';
+import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
 export class CreateUserCommand implements ICreateUserCommand {
-  @ApiProperty()
-  @IsNumber()
-  @MinMax(1, 3)
-  /**
-   * Type of the user (customer, employed, admin).
-   *
-   * @type {number}
-   * @memberof CreateUserCommand
-   */
-  typeUser: number;
-
   @ApiProperty()
   @IsString()
   @IsNotBlankString()

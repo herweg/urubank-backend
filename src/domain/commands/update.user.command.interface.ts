@@ -7,13 +7,6 @@ export interface IUpdateUserCommand {
    */
   id: string;
   /**
-   * Type of the user (customer, employed, admin).
-   *
-   * @type {number}
-   * @memberof IUpdateUserCommand
-   */
-  typeUser: number;
-  /**
    * Full name of the user.
    *
    * @type {string}
