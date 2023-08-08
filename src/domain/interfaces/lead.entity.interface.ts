@@ -41,6 +41,13 @@ export interface ILeadEntity {
    */
   amount: string;
   /**
+   * Quotas of the lead.
+   *
+   * @type {string}
+   * @memberof ILeadEntity
+   */
+  quotas: string;
+  /**
    * Clearing of the lead.
    *
    * @type {boolean}

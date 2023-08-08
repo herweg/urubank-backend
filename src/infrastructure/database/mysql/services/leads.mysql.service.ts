@@ -79,4 +79,15 @@ export class LeadsMysqlService implements ILeadsService<LeadMysqlEntity> {
   findById(id: string): Observable<LeadMysqlEntity> {
     return this.repository.findById(id);
   }
+
+  /**
+   * "Find leads by its userid."
+   *
+   * The function is defined as an Observable of LeadMysqlEntity[]
+   * @param {string} userId - The id of the lead to find.
+   * @returns Observable<LeadMysqlEntity[]>
+   */
+  findActiveLeadsByUserId(userId: string): Observable<LeadMysqlEntity[]> {
+    return this.repository.findActiveLeadsByUserId(userId);
+  }
 }

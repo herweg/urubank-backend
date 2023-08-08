@@ -79,4 +79,15 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
   findById(id: string): Observable<LeadMongoEntity> {
     return this.repository.findById(id);
   }
+
+  /**
+   * "Find leads by its userid."
+   *
+   * The function is defined as an Observable of LeadMongoEntity[]
+   * @param {string} userId - The id of the lead to find.
+   * @returns Observable<LeadMongoEntity[]>
+   */
+  findActiveLeadsByUserId(userId: string): Observable<LeadMongoEntity[]> {
+    return this.repository.findActiveLeadsByUserId(userId);
+  }
 }

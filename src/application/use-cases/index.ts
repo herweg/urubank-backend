@@ -6,6 +6,7 @@ export * from './delete-campaign.use-case';
 export * from './delete-financier.use-case';
 export * from './delete-lead.use-case';
 export * from './delete-user.use-case';
+export * from './findactiveleadsbyuserId-lead.use-case';
 export * from './findall-campaign.use-case';
 export * from './findall-financier.use-case';
 export * from './findall-lead.use-case';

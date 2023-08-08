@@ -6,6 +6,7 @@ export * from './delete.campaign.response';
 export * from './delete.financier.response';
 export * from './delete.lead.response';
 export * from './delete.user.response';
+export * from './findactiveleadsbyuserId.lead.response';
 export * from './findall.campaign.response';
 export * from './findall.financier.response';
 export * from './findall.lead.response';

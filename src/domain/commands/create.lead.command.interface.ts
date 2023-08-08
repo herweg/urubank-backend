@@ -28,6 +28,13 @@ export interface ICreateLeadCommand {
    */
   amount: string;
   /**
+   * Quotas of the lead.
+   *
+   * @type {string}
+   * @memberof ICreateLeadCommand
+   */
+  quotas: string;
+  /**
    * Clearing of the lead.
    *
    * @type {boolean}

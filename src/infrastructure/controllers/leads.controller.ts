@@ -15,12 +15,14 @@ import {
   DeleteLeadUseCase,
   FindAllLeadUseCase,
   FindByIdLeadUseCase,
+  FindActiveLeadsByUserIdLeadUseCase,
   UpdateLeadUseCase,
 } from '../../application/use-cases';
 import {
   CreateLeadCommand,
   DeleteLeadCommand,
   FindByIdLeadCommand,
+  FindActiveLeadsByUserIdLeadCommand,
   UpdateLeadCommand,
 } from '../commands';
 import {
@@ -28,6 +30,7 @@ import {
   DeleteLeadResponse,
   FindAllLeadResponse,
   FindByIdLeadResponse,
+  FindActiveLeadsByUserIdResponse,
   UpdateLeadResponse,
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
@@ -70,6 +73,15 @@ export class LeadsController {
     @Body() command: FindByIdLeadCommand,
   ): Observable<IResponse<LeadDomainEntityBase>> {
     const useCase = new FindByIdLeadUseCase(this.leadsService);
+    return useCase.execute(command);
+  }
+
+  @ApiResponse({ type: FindActiveLeadsByUserIdResponse })
+  @Put('/findactiveleadsbyuserid')
+  findActiveLeadsByUserId(
+    @Body() command: FindActiveLeadsByUserIdLeadCommand,
+  ): Observable<IResponse<LeadDomainEntityBase[]>> {
+    const useCase = new FindActiveLeadsByUserIdLeadUseCase(this.leadsService);
     return useCase.execute(command);
   }
 

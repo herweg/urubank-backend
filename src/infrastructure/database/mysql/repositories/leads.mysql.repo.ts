@@ -127,4 +127,28 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
       }),
     );
   }
+
+  /**
+   * It finds a active lead by user id and returns it as an observable
+   * @param {string} userId - string - the userId of the lead to find
+   * @returns Observable<LeadMysqlEntity[]>
+   */
+  findActiveLeadsByUserId(userId: string): Observable<LeadMysqlEntity[]> {
+    return from(this.repository.findBy({ userId: userId })).pipe(
+      map((value) => {
+        return value.filter((item) => item.status != 'FINALIZED');
+      }),
+      map((value) => {
+        if (value.length == 0) {
+          throw new NotFoundException(
+            `Error: not found active lead with userId: ${userId}`,
+          );
+        }
+        return value;
+      }),
+      catchError((error: Error) => {
+        throw error;
+      }),
+    );
+  }
 }

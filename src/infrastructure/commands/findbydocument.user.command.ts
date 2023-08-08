@@ -4,9 +4,7 @@ import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
-export class FindByDocumentUserCommand
-  implements IFindByDocumentUserCommand
-{
+export class FindByDocumentUserCommand implements IFindByDocumentUserCommand {
   @ApiProperty()
   @IsString()
   @IsNotBlankString()
