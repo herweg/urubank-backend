@@ -33,6 +33,10 @@ export class CampaignsMongoRepository
    */
   create(entity: CampaignDomainEntityBase): Observable<CampaignMongoEntity> {
     return from(this.repository.save(entity)).pipe(
+      map((value) => {
+        delete value._id;
+        return value;
+      }),
       catchError((error: Error) => {
         throw error;
       }),
@@ -57,6 +61,7 @@ export class CampaignsMongoRepository
         from(
           this.repository.update({ id: entity.id }, { ...value, ...entity }),
         ).subscribe();
+        delete value._id;
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
@@ -103,7 +108,10 @@ export class CampaignsMongoRepository
         if (value.length == 0) {
           throw new NotFoundException(`Error: not found campaigns`);
         }
-        return value;
+        return value.map((item) => {
+          delete item._id;
+          return item;
+        });
       }),
       catchError((error: Error) => {
         throw error;
@@ -124,6 +132,7 @@ export class CampaignsMongoRepository
             `Error: not found campaign with id: ${id}`,
           );
         }
+        delete value._id;
         return value;
       }),
       catchError((error: Error) => {

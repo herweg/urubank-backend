@@ -65,6 +65,19 @@ export class CreateLeadCommand implements ICreateLeadCommand {
   @IsNotEmptyString()
   @IsSingleLine()
   /**
+   * Final amount of the lead.
+   *
+   * @type {string}
+   * @memberof CreateLeadCommand
+   */
+  finalAmount: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
    * Quotas of the lead.
    *
    * @type {string}

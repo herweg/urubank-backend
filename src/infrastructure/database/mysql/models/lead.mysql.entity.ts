@@ -19,6 +19,9 @@ export class LeadMysqlEntity extends LeadDomainEntityBase {
   amount: string;
 
   @Column()
+  finalAmount: string;
+
+  @Column()
   quotas: string;
 
   @Column()

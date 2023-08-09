@@ -31,6 +31,10 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
    */
   create(entity: UserDomainEntityBase): Observable<UserMongoEntity> {
     return from(this.repository.save(entity)).pipe(
+      map((value) => {
+        delete value._id;
+        return value;
+      }),
       catchError((error: Error) => {
         throw error;
       }),
@@ -55,6 +59,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
         from(
           this.repository.update({ id: entity.id }, { ...value, ...entity }),
         ).subscribe();
+        delete value._id;
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
@@ -101,7 +106,10 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
         if (value.length == 0) {
           throw new NotFoundException(`Error: not found users`);
         }
-        return value;
+        return value.map((item) => {
+          delete item._id;
+          return item;
+        });
       }),
       catchError((error: Error) => {
         throw error;
@@ -120,6 +128,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
         if (value == null) {
           throw new NotFoundException(`Error: not found user with id: ${id}`);
         }
+        delete value._id;
         return value;
       }),
       catchError((error: Error) => {
@@ -141,6 +150,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
             `Error: not found user with document: ${document}`,
           );
         }
+        delete value._id;
         return value;
       }),
       catchError((error: Error) => {

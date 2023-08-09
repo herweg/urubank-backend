@@ -35,6 +35,13 @@ export interface IUpdateLeadCommand {
    */
   amount: string;
   /**
+   * Final amount of the lead.
+   *
+   * @type {string}
+   * @memberof IUpdateLeadCommand
+   */
+  finalAmount: string;
+  /**
    * Quotas of the lead.
    *
    * @type {string}

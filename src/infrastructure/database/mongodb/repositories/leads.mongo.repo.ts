@@ -31,6 +31,10 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
    */
   create(entity: LeadDomainEntityBase): Observable<LeadMongoEntity> {
     return from(this.repository.save(entity)).pipe(
+      map((value) => {
+        delete value._id;
+        return value;
+      }),
       catchError((error: Error) => {
         throw error;
       }),
@@ -55,6 +59,7 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         from(
           this.repository.update({ id: entity.id }, { ...value, ...entity }),
         ).subscribe();
+        delete value._id;
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
@@ -101,7 +106,10 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         if (value.length == 0) {
           throw new NotFoundException(`Error: not found leads`);
         }
-        return value;
+        return value.map((item) => {
+          delete item._id;
+          return item;
+        });
       }),
       catchError((error: Error) => {
         throw error;
@@ -120,6 +128,7 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         if (value == null) {
           throw new NotFoundException(`Error: not found lead with id: ${id}`);
         }
+        delete value._id;
         return value;
       }),
       catchError((error: Error) => {
@@ -144,7 +153,10 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
             `Error: not found active lead with userId: ${userId}`,
           );
         }
-        return value;
+        return value.map((item) => {
+          delete item._id;
+          return item;
+        });
       }),
       catchError((error: Error) => {
         throw error;

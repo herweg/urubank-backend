@@ -45,6 +45,13 @@ export class LeadDomainEntityBase implements ILeadEntity {
    */
   amount: string;
   /**
+   * Final amount of the lead.
+   *
+   * @type {string}
+   * @memberof LeadDomainEntityBase
+   */
+  finalAmount: string;
+  /**
    * Quotas of the lead.
    *
    * @type {string}
