@@ -143,9 +143,11 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
    * @returns Observable<LeadMongoEntity[]>
    */
   findActiveLeadsByUserId(userId: string): Observable<LeadMongoEntity[]> {
-    return from(this.repository.findBy({ userId: userId })).pipe(
+    return from(this.repository.find()).pipe(
       map((value) => {
-        return value.filter((item) => item.status != 'FINALIZED');
+        return value.filter(
+          (item) => item.status != 'FINALIZED' && item.userId == userId,
+        );
       }),
       map((value) => {
         if (value.length == 0) {
