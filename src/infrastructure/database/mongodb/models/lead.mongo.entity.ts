@@ -29,6 +29,9 @@ export class LeadMongoEntity extends LeadDomainEntityBase {
   quotas: string;
 
   @Column()
+  quotasAmount: string;
+
+  @Column()
   clearing: boolean;
 
   @Column()

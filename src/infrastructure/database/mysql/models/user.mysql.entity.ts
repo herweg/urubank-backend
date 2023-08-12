@@ -19,6 +19,12 @@ export class UserMysqlEntity extends UserDomainEntityBase {
   email: string;
 
   @Column()
+  age: string;
+
+  @Column()
+  salary: string;
+
+  @Column()
   country: string;
 
   @Column()
