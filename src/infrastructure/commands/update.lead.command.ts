@@ -100,6 +100,19 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
   quotas: string;
 
   @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
+   * Quotas amount of the lead.
+   *
+   * @type {string}
+   * @memberof CreateLeadCommand
+   */
+  quotasAmount: string;
+
+  @ApiProperty()
   @IsBoolean()
   /**
    * Clearing of the lead.

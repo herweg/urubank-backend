@@ -45,6 +45,20 @@ export class UserDomainEntityBase implements IUserEntity {
    */
   email: string;
   /**
+   * Age of the user.
+   *
+   * @type {string}
+   * @memberof UserDomainEntityBase
+   */
+  age: string;
+  /**
+   * Salary of the user.
+   *
+   * @type {string}
+   * @memberof UserDomainEntityBase
+   */
+  salary: string;
+  /**
    * Country of the user.
    *
    * @type {string}
@@ -98,6 +112,8 @@ export class UserDomainEntityBase implements IUserEntity {
     if (_data?.phone) this.phone = _data.phone;
     if (_data?.document) this.document = _data.document;
     if (_data?.email) this.email = _data.email;
+    if (_data?.age) this.age = _data.age;
+    if (_data?.salary) this.salary = _data.salary;
     if (_data?.country) this.country = _data.country;
     if (_data?.city) this.city = _data.city;
     if (_data?.address) this.address = _data.address;

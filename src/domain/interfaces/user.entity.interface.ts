@@ -41,6 +41,20 @@ export interface IUserEntity {
    */
   email: string;
   /**
+   * Age of the user.
+   *
+   * @type {string}
+   * @memberof IUserEntity
+   */
+  age: string;
+  /**
+   * Salary of the user.
+   *
+   * @type {string}
+   * @memberof IUserEntity
+   */
+  salary: string;
+  /**
    * Country of the user.
    *
    * @type {string}

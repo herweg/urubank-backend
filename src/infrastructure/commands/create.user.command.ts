@@ -63,6 +63,32 @@ export class CreateUserCommand implements ICreateUserCommand {
   @IsNotEmptyString()
   @IsSingleLine()
   /**
+   * Age of the user.
+   *
+   * @type {string}
+   * @memberof CreateUserCommand
+   */
+  age: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
+   * Salary of the user.
+   *
+   * @type {string}
+   * @memberof CreateUserCommand
+   */
+  salary: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
    * Country of the user.
    *
    * @type {string}

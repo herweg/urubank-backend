@@ -28,6 +28,20 @@ export interface ICreateUserCommand {
    */
   email: string;
   /**
+   * Age of the user.
+   *
+   * @type {string}
+   * @memberof ICreateUserCommand
+   */
+  age: string;
+  /**
+   * Salary of the user.
+   *
+   * @type {string}
+   * @memberof ICreateUserCommand
+   */
+  salary: string;
+  /**
    * Country of the user.
    *
    * @type {string}

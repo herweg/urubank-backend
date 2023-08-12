@@ -49,6 +49,13 @@ export interface IUpdateLeadCommand {
    */
   quotas: string;
   /**
+   * Quotas amount of the lead.
+   *
+   * @type {string}
+   * @memberof IUpdateLeadCommand
+   */
+  quotasAmount: string;
+  /**
    * Clearing of the lead.
    *
    * @type {boolean}

@@ -35,6 +35,20 @@ export interface IUpdateUserCommand {
    */
   email: string;
   /**
+   * Age of the user.
+   *
+   * @type {string}
+   * @memberof IUpdateUserCommand
+   */
+  age: string;
+  /**
+   * Salary of the user.
+   *
+   * @type {string}
+   * @memberof IUpdateUserCommand
+   */
+  salary: string;
+  /**
    * Country of the user.
    *
    * @type {string}

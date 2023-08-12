@@ -77,6 +77,32 @@ export class UpdateUserCommand implements IUpdateUserCommand {
   @IsNotEmptyString()
   @IsSingleLine()
   /**
+   * Age of the user.
+   *
+   * @type {string}
+   * @memberof UpdateUserCommand
+   */
+  age: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
+   * Salary of the user.
+   *
+   * @type {string}
+   * @memberof UpdateUserCommand
+   */
+  salary: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
    * Country of the user.
    *
    * @type {string}

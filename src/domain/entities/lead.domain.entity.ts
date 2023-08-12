@@ -59,6 +59,13 @@ export class LeadDomainEntityBase implements ILeadEntity {
    */
   quotas: string;
   /**
+   * Quotas amount of the lead.
+   *
+   * @type {string}
+   * @memberof LeadDomainEntityBase
+   */
+  quotasAmount: string;
+  /**
    * Clearing of the lead.
    *
    * @type {boolean}
@@ -113,6 +120,7 @@ export class LeadDomainEntityBase implements ILeadEntity {
     if (_data?.amount) this.amount = _data.amount;
     if (_data?.finalAmount) this.finalAmount = _data.finalAmount;
     if (_data?.quotas) this.quotas = _data.quotas;
+    if (_data?.quotasAmount) this.quotasAmount = _data.quotasAmount;
     if (_data?.status) this.status = _data.status;
     if (_data?.clearing != null) this.clearing = _data.clearing;
     if (_data?.documentPhoto) this.documentPhoto = _data.documentPhoto;
