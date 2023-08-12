@@ -19,7 +19,7 @@ export class UpdateCampaignResponse {
   /**
    * Data of the update.
    *
-   * @type {boolean}
+   * @type {ICampaignEntity}
    * @memberof UpdateCampaignResponse
    */
   @ApiResponseProperty()

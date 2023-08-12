@@ -19,7 +19,7 @@ export class FindByIdUserResponse {
   /**
    * Data of the findById.
    *
-   * @type {boolean}
+   * @type {IUserEntity}
    * @memberof FindByIdUserResponse
    */
   @ApiResponseProperty()

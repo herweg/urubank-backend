@@ -19,7 +19,7 @@ export class FindAllLeadResponse {
   /**
    * Data of the findAll.
    *
-   * @type {boolean}
+   * @type {ILeadEntity[]}
    * @memberof FindAllLeadResponse
    */
   @ApiResponseProperty()

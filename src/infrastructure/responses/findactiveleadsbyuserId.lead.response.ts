@@ -19,7 +19,7 @@ export class FindActiveLeadsByUserIdResponse {
   /**
    * Data of the find active leads.
    *
-   * @type {boolean}
+   * @type {ILeadEntity[]}
    * @memberof FindActiveLeadsByUserIdResponse
    */
   @ApiResponseProperty()

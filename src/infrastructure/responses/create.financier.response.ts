@@ -19,7 +19,7 @@ export class CreateFinancierResponse {
   /**
    * Data of the create.
    *
-   * @type {boolean}
+   * @type {IFinancierEntity}
    * @memberof CreateFinancierResponse
    */
   @ApiResponseProperty()

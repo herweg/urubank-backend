@@ -19,7 +19,7 @@ export class UpdateUserResponse {
   /**
    * Data of the update.
    *
-   * @type {boolean}
+   * @type {IUserEntity}
    * @memberof UpdateUserResponse
    */
   @ApiResponseProperty()

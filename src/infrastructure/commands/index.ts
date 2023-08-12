@@ -12,6 +12,8 @@ export * from './findbyid.campaign.command';
 export * from './findbyid.financier.command';
 export * from './findbyid.lead.command';
 export * from './findbyid.user.command';
+export * from './getduesforcapital.sumec.command';
+export * from './getpreapproved.sumec.command';
 export * from './update.campaign.command';
 export * from './update.financier.command';
 export * from './update.lead.command';

@@ -19,7 +19,7 @@ export class FindAllFinancierResponse {
   /**
    * Data of the findAll.
    *
-   * @type {boolean}
+   * @type {IFinancierEntity[]}
    * @memberof FindAllFinancierResponse
    */
   @ApiResponseProperty()

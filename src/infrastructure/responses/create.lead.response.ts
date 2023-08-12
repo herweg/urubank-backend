@@ -19,7 +19,7 @@ export class CreateLeadResponse {
   /**
    * Data of the create.
    *
-   * @type {boolean}
+   * @type {ILeadEntity}
    * @memberof CreateLeadResponse
    */
   @ApiResponseProperty()

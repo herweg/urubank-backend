@@ -19,7 +19,7 @@ export class FindAllCampaignResponse {
   /**
    * Data of the findAll.
    *
-   * @type {boolean}
+   * @type {ICampaignEntity[]}
    * @memberof FindAllCampaignResponse
    */
   @ApiResponseProperty()

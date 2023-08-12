@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 export interface ILeadsRepository<
   T extends LeadDomainEntityBase = LeadDomainEntityBase,
 > {
-  create(entity: LeadDomainEntityBase): Observable<T>;
-  update(entity: LeadDomainEntityBase): Observable<T>;
+  create(entity: T): Observable<T>;
+  update(entity: T): Observable<T>;
   remove(id: string): Observable<boolean>;
   findAll(): Observable<T[]>;
   findById(id: string): Observable<T>;

@@ -19,7 +19,7 @@ export class CreateCampaignResponse {
   /**
    * Data of the create.
    *
-   * @type {boolean}
+   * @type {ICampaignEntity}
    * @memberof CreateCampaignResponse
    */
   @ApiResponseProperty()

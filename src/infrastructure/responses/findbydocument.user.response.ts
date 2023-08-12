@@ -19,7 +19,7 @@ export class FindByDocumentUserResponse {
   /**
    * Data of the findByDocument.
    *
-   * @type {boolean}
+   * @type {IUserEntity}
    * @memberof FindByDocumentUserResponse
    */
   @ApiResponseProperty()

@@ -19,7 +19,7 @@ export class FindByIdCampaignResponse {
   /**
    * Data of the findById.
    *
-   * @type {boolean}
+   * @type {ICampaignEntity}
    * @memberof FindByIdCampaignResponse
    */
   @ApiResponseProperty()

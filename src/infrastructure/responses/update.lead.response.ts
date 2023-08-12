@@ -19,7 +19,7 @@ export class UpdateLeadResponse {
   /**
    * Data of the update.
    *
-   * @type {boolean}
+   * @type {ILeadEntity}
    * @memberof UpdateLeadResponse
    */
   @ApiResponseProperty()

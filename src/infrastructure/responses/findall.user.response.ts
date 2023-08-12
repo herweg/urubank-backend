@@ -19,7 +19,7 @@ export class FindAllUserResponse {
   /**
    * Data of the findAll.
    *
-   * @type {boolean}
+   * @type {IUserEntity[]}
    * @memberof FindAllUserResponse
    */
   @ApiResponseProperty()

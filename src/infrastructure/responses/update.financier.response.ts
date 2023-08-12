@@ -19,7 +19,7 @@ export class UpdateFinancierResponse {
   /**
    * Data of the update.
    *
-   * @type {boolean}
+   * @type {IFinancierEntity}
    * @memberof UpdateFinancierResponse
    */
   @ApiResponseProperty()

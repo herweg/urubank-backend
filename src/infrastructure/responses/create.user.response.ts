@@ -19,7 +19,7 @@ export class CreateUserResponse {
   /**
    * Data of the create.
    *
-   * @type {boolean}
+   * @type {IUserEntity}
    * @memberof CreateUserResponse
    */
   @ApiResponseProperty()

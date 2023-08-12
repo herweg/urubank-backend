@@ -19,7 +19,7 @@ export class FindByIdLeadResponse {
   /**
    * Data of the findById.
    *
-   * @type {boolean}
+   * @type {ILeadEntity}
    * @memberof FindByIdLeadResponse
    */
   @ApiResponseProperty()
