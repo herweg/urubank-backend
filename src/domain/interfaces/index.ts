@@ -9,6 +9,7 @@ export * from './lead.repository.interface';
 export * from './lead.service.interface';
 export * from './response.interface';
 export * from './sumec.entity.interface';
+export * from './sumec.quotes.interface';
 export * from './sumec.service.interface';
 export * from './user.entity.interface';
 export * from './user.repository.interface';
