@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { ILeadEntity } from '../interfaces';
+import { CampaignDomainEntityBase, UserDomainEntityBase } from '.';
 
 /**
  * Leads Domain Entity Base
@@ -22,14 +23,14 @@ export class LeadDomainEntityBase implements ILeadEntity {
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  campaignId: string;
+  campaignId: string | CampaignDomainEntityBase;
   /**
    * User UUID of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  userId: string;
+  userId: string | UserDomainEntityBase;
   /**
    * Status of the lead.
    *

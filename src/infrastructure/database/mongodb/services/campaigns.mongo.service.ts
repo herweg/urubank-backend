@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 
 import { CampaignMongoEntity } from '../models';
-import { CampaignsMongoRepository } from '../repositories';
+import {
+  CampaignsMongoRepository,
+  FinanciersMongoRepository,
+} from '../repositories';
 import { ICampaignsService } from '../../../../domain/interfaces';
 import { CampaignDomainEntityBase } from '../../../../domain/entities';
 
@@ -22,7 +25,10 @@ export class CampaignsMongoService
    * created
    * @param {CampaignsMongoRepository} repository - CampaignsMongoRepository
    */
-  constructor(private readonly repository: CampaignsMongoRepository) {}
+  constructor(
+    private readonly repository: CampaignsMongoRepository,
+    private readonly repositoryFinanciers: FinanciersMongoRepository,
+  ) {}
 
   /**
    * > The function creates a new campaign entity in the database
@@ -68,7 +74,17 @@ export class CampaignsMongoService
    * @returns An observable of an array of CampaignMongoEntity objects.
    */
   findAll(): Observable<CampaignMongoEntity[]> {
-    return this.repository.findAll();
+    const campaigns = this.repository.findAll();
+    const financiers = this.repositoryFinanciers.findAll();
+    return combineLatest([campaigns, financiers]).pipe(
+      map(([camp, fin]) => {
+        return camp.map((item) => {
+          item.financerId =
+            fin.find((find) => find.id == item.financerId) || item.financerId;
+          return item;
+        });
+      }),
+    );
   }
 
   /**
@@ -79,6 +95,14 @@ export class CampaignsMongoService
    * @returns Observable<CampaignMongoEntity>
    */
   findById(id: string): Observable<CampaignMongoEntity> {
-    return this.repository.findById(id);
+    const campaigns = this.repository.findById(id);
+    const financiers = this.repositoryFinanciers.findAll();
+    return combineLatest([campaigns, financiers]).pipe(
+      map(([camp, fin]) => {
+        camp.financerId =
+          fin.find((find) => find.id == camp.financerId) || camp.financerId;
+        return camp;
+      }),
+    );
   }
 }

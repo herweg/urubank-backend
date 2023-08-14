@@ -1,3 +1,5 @@
+import { IFinancierEntity } from '.';
+
 /**
  * Campaign entity interface
  *
@@ -18,7 +20,7 @@ export interface ICampaignEntity {
    * @type {string}
    * @memberof ICampaignEntity
    */
-  financerId: string;
+  financerId: string | IFinancierEntity;
   /**
    * Brand name of the campaign.
    *

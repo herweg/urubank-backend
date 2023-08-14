@@ -1,5 +1,9 @@
 import { Entity, Column } from 'typeorm';
-import { LeadDomainEntityBase } from '../../../../domain/entities';
+import {
+  LeadDomainEntityBase,
+  CampaignDomainEntityBase,
+  UserDomainEntityBase,
+} from '../../../../domain/entities';
 
 @Entity('leads')
 export class LeadMysqlEntity extends LeadDomainEntityBase {
@@ -7,10 +11,10 @@ export class LeadMysqlEntity extends LeadDomainEntityBase {
   id: string;
 
   @Column()
-  campaignId: string;
+  campaignId: string | CampaignDomainEntityBase;
 
   @Column()
-  userId: string;
+  userId: string | UserDomainEntityBase;
 
   @Column()
   status: string;

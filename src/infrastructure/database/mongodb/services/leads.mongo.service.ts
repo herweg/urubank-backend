@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Observable } from 'rxjs';
-
+import { Observable, combineLatest, map } from 'rxjs';
 import { LeadMongoEntity } from '../models';
 import { LeadsMongoRepository } from '../repositories';
 import { ILeadsService } from '../../../../domain/interfaces';
 import { LeadDomainEntityBase } from '../../../../domain/entities';
+import { CampaignsMongoService } from './campaigns.mongo.service';
+import { UsersMongoService } from './users.mongo.service';
 
 /**
  * Leads mongo service class
@@ -20,7 +21,11 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * created
    * @param {LeadsMongoRepository} repository - LeadsMongoRepository
    */
-  constructor(private readonly repository: LeadsMongoRepository) {}
+  constructor(
+    private readonly repository: LeadsMongoRepository,
+    private readonly repositoryCampaigns: CampaignsMongoService,
+    private readonly repositoryUsers: UsersMongoService,
+  ) {}
 
   /**
    * > The function creates a new lead entity in the database
@@ -66,7 +71,20 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * @returns An observable of an array of LeadMongoEntity objects.
    */
   findAll(): Observable<LeadMongoEntity[]> {
-    return this.repository.findAll();
+    const leads = this.repository.findAll();
+    const users = this.repositoryUsers.findAll();
+    const campaigns = this.repositoryCampaigns.findAll();
+    return combineLatest([leads, users, campaigns]).pipe(
+      map(([led, use, camp]) => {
+        return led.map((item) => {
+          item.userId =
+            use.find((find) => find.id == item.userId) || item.userId;
+          item.campaignId =
+            camp.find((find) => find.id == item.campaignId) || item.campaignId;
+          return item;
+        });
+      }),
+    );
   }
 
   /**
@@ -77,7 +95,17 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * @returns Observable<LeadMongoEntity>
    */
   findById(id: string): Observable<LeadMongoEntity> {
-    return this.repository.findById(id);
+    const leads = this.repository.findById(id);
+    const users = this.repositoryUsers.findAll();
+    const campaigns = this.repositoryCampaigns.findAll();
+    return combineLatest([leads, users, campaigns]).pipe(
+      map(([led, use, camp]) => {
+        led.userId = use.find((find) => find.id == led.userId) || led.userId;
+        led.campaignId =
+          camp.find((find) => find.id == led.campaignId) || led.campaignId;
+        return led;
+      }),
+    );
   }
 
   /**
@@ -88,6 +116,19 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * @returns Observable<LeadMongoEntity[]>
    */
   findActiveLeadsByUserId(userId: string): Observable<LeadMongoEntity[]> {
-    return this.repository.findActiveLeadsByUserId(userId);
+    const leads = this.repository.findActiveLeadsByUserId(userId);
+    const users = this.repositoryUsers.findAll();
+    const campaigns = this.repositoryCampaigns.findAll();
+    return combineLatest([leads, users, campaigns]).pipe(
+      map(([led, use, camp]) => {
+        return led.map((item) => {
+          item.userId =
+            use.find((find) => find.id == item.userId) || item.userId;
+          item.campaignId =
+            camp.find((find) => find.id == item.campaignId) || item.campaignId;
+          return item;
+        });
+      }),
+    );
   }
 }

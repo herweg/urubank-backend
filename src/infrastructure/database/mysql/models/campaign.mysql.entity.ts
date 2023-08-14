@@ -1,5 +1,8 @@
 import { Entity, Column } from 'typeorm';
-import { CampaignDomainEntityBase } from '../../../../domain/entities';
+import {
+  CampaignDomainEntityBase,
+  FinancierDomainEntityBase,
+} from '../../../../domain/entities';
 
 @Entity('campaigns')
 export class CampaignMysqlEntity extends CampaignDomainEntityBase {
@@ -7,7 +10,7 @@ export class CampaignMysqlEntity extends CampaignDomainEntityBase {
   id: string;
 
   @Column()
-  financerId: string;
+  financerId: string | FinancierDomainEntityBase;
 
   @Column()
   brandName: string;

@@ -1,5 +1,8 @@
 import { Entity, Column, ObjectIdColumn } from 'typeorm';
-import { CampaignDomainEntityBase } from '../../../../domain/entities';
+import {
+  CampaignDomainEntityBase,
+  FinancierDomainEntityBase,
+} from '../../../../domain/entities';
 import { ObjectId } from 'mongodb';
 
 @Entity('campaigns')
@@ -11,7 +14,7 @@ export class CampaignMongoEntity extends CampaignDomainEntityBase {
   id: string;
 
   @Column()
-  financerId: string;
+  financerId: string | FinancierDomainEntityBase;
 
   @Column()
   brandName: string;

@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { ICampaignEntity } from '../interfaces';
+import { FinancierDomainEntityBase } from '.';
 
 /**
  * Campaigns Domain Entity Base
@@ -22,7 +23,7 @@ export class CampaignDomainEntityBase implements ICampaignEntity {
    * @type {string}
    * @memberof CampaignDomainEntityBase
    */
-  financerId: string;
+  financerId: string | FinancierDomainEntityBase;
   /**
    * Brand name of the campaign.
    *

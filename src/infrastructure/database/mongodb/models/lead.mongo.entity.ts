@@ -1,5 +1,9 @@
 import { Entity, Column, ObjectIdColumn } from 'typeorm';
-import { LeadDomainEntityBase } from '../../../../domain/entities';
+import {
+  CampaignDomainEntityBase,
+  LeadDomainEntityBase,
+  UserDomainEntityBase,
+} from '../../../../domain/entities';
 import { ObjectId } from 'mongodb';
 
 @Entity('leads')
@@ -11,10 +15,10 @@ export class LeadMongoEntity extends LeadDomainEntityBase {
   id: string;
 
   @Column()
-  campaignId: string;
+  campaignId: string | CampaignDomainEntityBase;
 
   @Column()
-  userId: string;
+  userId: string | UserDomainEntityBase;
 
   @Column()
   status: string;

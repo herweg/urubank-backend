@@ -1,3 +1,5 @@
+import { ICampaignEntity, IUserEntity } from '.';
+
 /**
  * Lead entity interface
  *
@@ -18,14 +20,14 @@ export interface ILeadEntity {
    * @type {string}
    * @memberof ILeadEntity
    */
-  campaignId: string;
+  campaignId: string | ICampaignEntity;
   /**
    * User UUID of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  userId: string;
+  userId: string | IUserEntity;
   /**
    * Status of the lead.
    *
