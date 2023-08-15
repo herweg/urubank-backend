@@ -10,4 +10,5 @@ export interface ILeadsService<
   findAll(): Observable<T[]>;
   findById(id: string): Observable<T>;
   findActiveLeadsByUserId(userId: string): Observable<T[]>;
+  findAllByFinancierId(financierId: string): Observable<T[]>;
 }

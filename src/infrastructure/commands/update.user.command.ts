@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IUpdateUserCommand } from '../../domain/commands/update.user.command.interface';
+import { IUpdateUserCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString, IsUUID, IsArray } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';

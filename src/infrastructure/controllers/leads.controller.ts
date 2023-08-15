@@ -16,6 +16,7 @@ import {
   FindAllLeadUseCase,
   FindByIdLeadUseCase,
   FindActiveLeadsByUserIdLeadUseCase,
+  FindAllByFinancierIdLeadUseCase,
   UpdateLeadUseCase,
 } from '../../application/use-cases';
 import {
@@ -23,6 +24,7 @@ import {
   DeleteLeadCommand,
   FindByIdLeadCommand,
   FindActiveLeadsByUserIdLeadCommand,
+  FindAllByFinancierIdLeadCommand,
   UpdateLeadCommand,
 } from '../commands';
 import {
@@ -31,6 +33,7 @@ import {
   FindAllLeadResponse,
   FindByIdLeadResponse,
   FindActiveLeadsByUserIdResponse,
+  FindAllByFinancierIdLeadResponse,
   UpdateLeadResponse,
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
@@ -82,6 +85,15 @@ export class LeadsController {
     @Body() command: FindActiveLeadsByUserIdLeadCommand,
   ): Observable<IResponse<LeadDomainEntityBase[]>> {
     const useCase = new FindActiveLeadsByUserIdLeadUseCase(this.leadsService);
+    return useCase.execute(command);
+  }
+
+  @ApiResponse({ type: FindAllByFinancierIdLeadResponse })
+  @Put('/findallbyfinancierid')
+  findAllByFinancierId(
+    @Body() command: FindAllByFinancierIdLeadCommand,
+  ): Observable<IResponse<LeadDomainEntityBase[]>> {
+    const useCase = new FindAllByFinancierIdLeadUseCase(this.leadsService);
     return useCase.execute(command);
   }
 

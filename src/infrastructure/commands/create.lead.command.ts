@@ -1,7 +1,7 @@
-import { IsBoolean, IsString, IsUUID } from 'class-validator';
-import { ICreateLeadCommand } from '../../domain/commands/create.lead.command.interface';
 import { ApiProperty } from '@nestjs/swagger';
+import { ICreateLeadCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
+import { IsBoolean, IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
 export class CreateLeadCommand implements ICreateLeadCommand {

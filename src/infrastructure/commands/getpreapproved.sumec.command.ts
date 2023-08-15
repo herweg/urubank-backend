@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IGetPreApprovedSumecCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
-import { IGetPreApprovedSumecCommand } from '../../domain/commands';
 
 export class GetPreApprovedSumecCommand implements IGetPreApprovedSumecCommand {
   @ApiProperty()

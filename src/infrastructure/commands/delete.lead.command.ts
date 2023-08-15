@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IDeleteLeadCommand } from '../../domain/commands/delete.lead.command.interface';
+import { IDeleteLeadCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';

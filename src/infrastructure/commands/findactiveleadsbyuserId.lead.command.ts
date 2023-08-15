@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IFindActiveLeadsByUserIdLeadCommand } from '../../domain/commands/findactiveleadsbyuserId.lead.command.interface';
+import { IFindActiveLeadsByUserIdLeadCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';

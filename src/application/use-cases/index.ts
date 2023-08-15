@@ -11,6 +11,7 @@ export * from './findall-campaign.use-case';
 export * from './findall-financier.use-case';
 export * from './findall-lead.use-case';
 export * from './findall-user.use-case';
+export * from './findallbyfinancierid-lead.use-case';
 export * from './findbydocument-user.use-case';
 export * from './findbyid-campaign.use-case';
 export * from './findbyid-financier.use-case';

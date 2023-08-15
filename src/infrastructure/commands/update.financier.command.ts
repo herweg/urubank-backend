@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IUpdateFinancierCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString, IsArray, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
-import { IUpdateFinancierCommand } from '../../domain/commands/update.financier.command.interface';
 
 export class UpdateFinancierCommand implements IUpdateFinancierCommand {
   @ApiProperty()

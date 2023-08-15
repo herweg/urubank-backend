@@ -1,10 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IDeleteCampaignCommand } from '../../domain/commands';
+import { IFindAllByFinancierIdLeadCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
-export class DeleteCampaignCommand implements IDeleteCampaignCommand {
+export class FindAllByFinancierIdLeadCommand
+  implements IFindAllByFinancierIdLeadCommand
+{
   @ApiProperty()
   @IsString()
   @IsNotBlankString()
@@ -12,10 +14,10 @@ export class DeleteCampaignCommand implements IDeleteCampaignCommand {
   @IsSingleLine()
   @IsUUID()
   /**
-   * UUID for find.
+   * FinancierId for find.
    *
    * @type {string}
-   * @memberof DeleteCampaignCommand
+   * @memberof FindAllByFinancierIdLeadCommand
    */
-  id: string;
+  financierId: string;
 }

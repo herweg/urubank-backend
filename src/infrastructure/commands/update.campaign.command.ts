@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IUpdateCampaignCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
-import { IUpdateCampaignCommand } from '../../domain/commands/update.campaign.command.interface';
 
 export class UpdateCampaignCommand implements IUpdateCampaignCommand {
   @ApiProperty()

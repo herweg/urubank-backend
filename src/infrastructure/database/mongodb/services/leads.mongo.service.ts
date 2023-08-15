@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Observable, combineLatest, map } from 'rxjs';
-import { LeadMongoEntity } from '../models';
+import {
+  CampaignMongoEntity,
+  FinancierMongoEntity,
+  LeadMongoEntity,
+} from '../models';
 import { LeadsMongoRepository } from '../repositories';
 import { ILeadsService } from '../../../../domain/interfaces';
 import { LeadDomainEntityBase } from '../../../../domain/entities';
@@ -112,7 +116,7 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * "Find leads by its userid."
    *
    * The function is defined as an Observable of LeadMongoEntity[]
-   * @param {string} userId - The id of the lead to find.
+   * @param {string} userId - The id of the user to find.
    * @returns Observable<LeadMongoEntity[]>
    */
   findActiveLeadsByUserId(userId: string): Observable<LeadMongoEntity[]> {
@@ -128,6 +132,39 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
             camp.find((find) => find.id == item.campaignId) || item.campaignId;
           return item;
         });
+      }),
+    );
+  }
+
+  /**
+   * "Find leads by financierId."
+   *
+   * The function is defined as an Observable of LeadMongoEntity[]
+   * @param {string} financierId - The id of the financier to find.
+   * @returns Observable<LeadMongoEntity[]>
+   */
+  findAllByFinancierId(financierId: string): Observable<LeadMongoEntity[]> {
+    const leads = this.repository.findAll();
+    const users = this.repositoryUsers.findAll();
+    const campaigns = this.repositoryCampaigns.findAll();
+    return combineLatest([leads, users, campaigns]).pipe(
+      map(([led, use, camp]) => {
+        return led
+          .map((item) => {
+            item.campaignId =
+              camp.find((find) => find.id == item.campaignId) ||
+              item.campaignId;
+            if (
+              item.campaignId instanceof CampaignMongoEntity &&
+              item.campaignId.financerId instanceof FinancierMongoEntity &&
+              item.campaignId.financerId.id == financierId
+            ) {
+              item.userId =
+                use.find((find) => find.id == item.userId) || item.userId;
+              return item;
+            }
+          })
+          .filter((value) => value != null);
       }),
     );
   }

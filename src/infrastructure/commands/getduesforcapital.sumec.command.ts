@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IGetDuesForCapitalSumecCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
 import { IsString } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
-import { IGetDuesForCapitalSumecCommand } from '../../domain/commands';
 
 export class GetDuesForCapitalSumecCommand
   implements IGetDuesForCapitalSumecCommand

@@ -11,6 +11,7 @@ export * from './findall.campaign.response';
 export * from './findall.financier.response';
 export * from './findall.lead.response';
 export * from './findall.user.response';
+export * from './findallbyfinancierId.lead.response';
 export * from './findbydocument.user.response';
 export * from './findbyid.campaign.response';
 export * from './findbyid.financier.response';
