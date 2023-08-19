@@ -95,13 +95,17 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
    * obtained by mapping the result of the find() function of the MysqlDB repository
    * @returns Observable<LeadMysqlEntity[]>
    */
-  findAll(): Observable<LeadMysqlEntity[]> {
+  findAll(minDate?: number, maxDate?: number): Observable<LeadMysqlEntity[]> {
     return from(this.repository.find()).pipe(
       map((value) => {
         if (value.length == 0) {
           throw new NotFoundException(`Error: not found leads`);
         }
-        return value;
+        return value.filter(
+          (item) =>
+            item.createdAt >= (minDate || 0) &&
+            item.createdAt <= (maxDate || Infinity),
+        );
       }),
       catchError((error: Error) => {
         throw error;

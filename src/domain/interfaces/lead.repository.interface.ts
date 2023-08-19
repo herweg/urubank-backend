@@ -7,7 +7,7 @@ export interface ILeadsRepository<
   create(entity: T): Observable<T>;
   update(entity: T): Observable<T>;
   remove(id: string): Observable<boolean>;
-  findAll(): Observable<T[]>;
+  findAll(minDate?: number, maxDate?: number): Observable<T[]>;
   findById(id: string): Observable<T>;
   findActiveLeadsByUserId(userId: string): Observable<T[]>;
 }

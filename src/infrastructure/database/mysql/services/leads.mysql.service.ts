@@ -74,8 +74,8 @@ export class LeadsMysqlService implements ILeadsService<LeadMysqlEntity> {
    * LeadMysqlEntity objects
    * @returns An observable of an array of LeadMysqlEntity objects.
    */
-  findAll(): Observable<LeadMysqlEntity[]> {
-    const leads = this.repository.findAll();
+  findAll(minDate?: number, maxDate?: number): Observable<LeadMysqlEntity[]> {
+    const leads = this.repository.findAll(minDate, maxDate);
     const users = this.repositoryUsers.findAll();
     const campaigns = this.repositoryCampaigns.findAll();
     return combineLatest([leads, users, campaigns]).pipe(
@@ -142,8 +142,12 @@ export class LeadsMysqlService implements ILeadsService<LeadMysqlEntity> {
    * @param {string} financierId - The id of the financier to find.
    * @returns Observable<LeadMysqlEntity[]>
    */
-  findAllByFinancierId(financierId: string): Observable<LeadMysqlEntity[]> {
-    const leads = this.repository.findAll();
+  findAllByFinancierId(
+    financierId: string,
+    minDate?: number,
+    maxDate?: number,
+  ): Observable<LeadMysqlEntity[]> {
+    const leads = this.repository.findAll(minDate, maxDate);
     const users = this.repositoryUsers.findAll();
     const campaigns = this.repositoryCampaigns.findAll();
     return combineLatest([leads, users, campaigns]).pipe(

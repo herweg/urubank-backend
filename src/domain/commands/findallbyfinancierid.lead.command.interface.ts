@@ -6,4 +6,18 @@ export interface IFindAllByFinancierIdLeadCommand {
    * @memberof IFindAllByFinancierIdLeadCommand
    */
   financierId: string;
+  /**
+   * Min date for find.
+   *
+   * @type {number}
+   * @memberof IFindAllByFinancierIdLeadCommand
+   */
+  minDate?: number;
+  /**
+   * Max date for find.
+   *
+   * @type {number}
+   * @memberof IFindAllByFinancierIdLeadCommand
+   */
+  maxDate?: number;
 }

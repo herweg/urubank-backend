@@ -100,16 +100,22 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
    * obtained by mapping the result of the find() function of the MongoDB repository
    * @returns Observable<LeadMongoEntity[]>
    */
-  findAll(): Observable<LeadMongoEntity[]> {
+  findAll(minDate?: number, maxDate?: number): Observable<LeadMongoEntity[]> {
     return from(this.repository.find()).pipe(
       map((value) => {
         if (value.length == 0) {
           throw new NotFoundException(`Error: not found leads`);
         }
-        return value.map((item) => {
-          delete item._id;
-          return item;
-        });
+        return value
+          .map((item) => {
+            delete item._id;
+            return item;
+          })
+          .filter(
+            (item) =>
+              item.createdAt >= (minDate || 0) &&
+              item.createdAt <= (maxDate || Infinity),
+          );
       }),
       catchError((error: Error) => {
         throw error;

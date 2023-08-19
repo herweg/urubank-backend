@@ -7,8 +7,12 @@ export interface ILeadsService<
   create(entity: T): Observable<T>;
   update(entity: T): Observable<T>;
   remove(id: string): Observable<boolean>;
-  findAll(): Observable<T[]>;
+  findAll(minDate?: number, maxDate?: number): Observable<T[]>;
   findById(id: string): Observable<T>;
   findActiveLeadsByUserId(userId: string): Observable<T[]>;
-  findAllByFinancierId(financierId: string): Observable<T[]>;
+  findAllByFinancierId(
+    financierId: string,
+    minDate?: number,
+    maxDate?: number,
+  ): Observable<T[]>;
 }

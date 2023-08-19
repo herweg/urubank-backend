@@ -7,6 +7,7 @@ export * from './delete.financier.command.interface';
 export * from './delete.lead.command.interface';
 export * from './delete.user.command.interface';
 export * from './findactiveleadsbyuserId.lead.command.interface';
+export * from './findall.lead.command.interface';
 export * from './findallbyfinancierid.lead.command.interface';
 export * from './findbydocument.user.command.interface';
 export * from './findbyid.campaign.command.interface';

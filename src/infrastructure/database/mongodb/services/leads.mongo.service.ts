@@ -74,8 +74,8 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * LeadMongoEntity objects
    * @returns An observable of an array of LeadMongoEntity objects.
    */
-  findAll(): Observable<LeadMongoEntity[]> {
-    const leads = this.repository.findAll();
+  findAll(minDate?: number, maxDate?: number): Observable<LeadMongoEntity[]> {
+    const leads = this.repository.findAll(minDate, maxDate);
     const users = this.repositoryUsers.findAll();
     const campaigns = this.repositoryCampaigns.findAll();
     return combineLatest([leads, users, campaigns]).pipe(
@@ -143,8 +143,12 @@ export class LeadsMongoService implements ILeadsService<LeadMongoEntity> {
    * @param {string} financierId - The id of the financier to find.
    * @returns Observable<LeadMongoEntity[]>
    */
-  findAllByFinancierId(financierId: string): Observable<LeadMongoEntity[]> {
-    const leads = this.repository.findAll();
+  findAllByFinancierId(
+    financierId: string,
+    minDate?: number,
+    maxDate?: number,
+  ): Observable<LeadMongoEntity[]> {
+    const leads = this.repository.findAll(minDate, maxDate);
     const users = this.repositoryUsers.findAll();
     const campaigns = this.repositoryCampaigns.findAll();
     return combineLatest([leads, users, campaigns]).pipe(

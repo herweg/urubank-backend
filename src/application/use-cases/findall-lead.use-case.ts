@@ -1,8 +1,10 @@
 import { Observable, map } from 'rxjs';
+import { IFindAllLeadCommand } from '../../domain/commands';
 import { IResponse, ILeadsService } from '../../domain/interfaces';
 import { LeadDomainEntityBase } from '../../domain/entities';
 
 export class FindAllLeadUseCase<
+  Command extends IFindAllLeadCommand = IFindAllLeadCommand,
   Response extends IResponse<LeadDomainEntityBase[]> = IResponse<
     LeadDomainEntityBase[]
   >,
@@ -10,12 +12,12 @@ export class FindAllLeadUseCase<
   constructor(private readonly leadsService: ILeadsService) {}
 
   /**
-   * > The `execute` function returns an observable of type `Response` that is the result of the
-   * `executeCommand` function
-   * @returns An Observable of type Response.
+   * It takes a command, executes it, and returns a response
+   * @param {Command} [command] - The command to execute.
+   * @returns An Observable of a Response object.
    */
-  execute(): Observable<Response> {
-    return this.executeCommand().pipe(
+  execute(command?: Command): Observable<Response> {
+    return this.executeCommand(command).pipe(
       map(
         (value: LeadDomainEntityBase[]) =>
           ({ success: true, data: value } as Response),
@@ -24,21 +26,24 @@ export class FindAllLeadUseCase<
   }
 
   /**
-   * > The function executes the aggregate root's command and returns the aggregate root's domain
-   * entities
-   * @returns Observable<LeadDomainEntityBase[] | null>
+   * It takes a command, validates it, and returns an observable of the result
+   * @param {Command} command - Command - The command that is being executed.
+   * @returns Observable<LeadDomainEntityBase | null>
    */
-  private executeCommand(): Observable<LeadDomainEntityBase[] | null> {
-    return this.executeInvoiceAggregateRoot();
+  private executeCommand(
+    command: Command,
+  ): Observable<LeadDomainEntityBase[] | null> {
+    return this.executeInvoiceAggregateRoot(command);
   }
 
   /**
-   * > It returns an observable of an array of lead domain entities or null
-   * @returns An Observable of an array of LeadDomainEntityBase objects or null.
+   * If the lead exists, then return the lead, otherwise return null.
+   * @param {Command} command - Command - The command that was sent to the aggregate root.
+   * @returns Observable<LeadDomainEntityBase | null>
    */
-  private executeInvoiceAggregateRoot(): Observable<
-    LeadDomainEntityBase[] | null
-  > {
-    return this.leadsService.findAll();
+  private executeInvoiceAggregateRoot(
+    command: Command,
+  ): Observable<LeadDomainEntityBase[] | null> {
+    return this.leadsService.findAll(command.minDate, command.maxDate);
   }
 }

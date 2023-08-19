@@ -59,6 +59,10 @@ export class FindAllByFinancierIdLeadUseCase<
   private executeInvoiceAggregateRoot(
     command: Command,
   ): Observable<LeadDomainEntityBase[] | null> {
-    return this.leadsService.findAllByFinancierId(command.financierId);
+    return this.leadsService.findAllByFinancierId(
+      command.financierId,
+      command.minDate,
+      command.maxDate,
+    );
   }
 }

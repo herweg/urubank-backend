@@ -6,6 +6,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -22,6 +23,7 @@ import {
 import {
   CreateLeadCommand,
   DeleteLeadCommand,
+  FindAllLeadCommand,
   FindByIdLeadCommand,
   FindActiveLeadsByUserIdLeadCommand,
   FindAllByFinancierIdLeadCommand,
@@ -99,8 +101,10 @@ export class LeadsController {
 
   @ApiResponse({ type: FindAllLeadResponse })
   @Get('/findall')
-  findAllLead(): Observable<IResponse<LeadDomainEntityBase[]>> {
+  findAllLead(
+    @Query() command?: FindAllLeadCommand,
+  ): Observable<IResponse<LeadDomainEntityBase[]>> {
     const useCase = new FindAllLeadUseCase(this.leadsService);
-    return useCase.execute();
+    return useCase.execute(command);
   }
 }
