@@ -9,6 +9,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 async function bootstrap() {
   dotenv.config({ path: 'environments/.env.' + process.env.NODE_ENV });
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.useBodyParser('json', { limit: '10mb' });
   app.useStaticAssets(join(__dirname, '..', 'assets/images'), {
     prefix: '/assets/images/',
   });
