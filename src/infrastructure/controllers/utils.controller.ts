@@ -1,14 +1,8 @@
-import * as rawbody from 'raw-body';
 import * as fs from 'fs';
 import { v4 as uuid } from 'uuid';
-import { Controller, Post, Body, Req, Put } from '@nestjs/common';
-import {
-  ApiTags,
-  ApiResponse,
-  ApiProduces,
-  ApiConsumes,
-} from '@nestjs/swagger';
-import { Observable } from 'rxjs';
+import { Controller, Post, Body, Put } from '@nestjs/common';
+import { ApiTags, ApiResponse } from '@nestjs/swagger';
+import { Observable, of } from 'rxjs';
 import { IResponse } from 'src/domain/interfaces';
 import { SumecDomainEntityBase } from '../../domain/entities';
 import {
@@ -48,17 +42,9 @@ export class UtilsController {
     return useCase.execute(command);
   }
 
-  @ApiConsumes('text/plain')
-  @ApiProduces('text/plain')
   @Put('/images/save')
-  async saveImage(@Body() data, @Req() req): Promise<string> {
-    if (req.readable) {
-      const raw = await rawbody(req);
-      const text = raw.toString().trim();
-      return this.convertBase64ToSaveImage(text);
-    } else {
-      return this.convertBase64ToSaveImage(data);
-    }
+  saveImage(@Body('data') data): Observable<string> {
+    return of(this.convertBase64ToSaveImage(data));
   }
 
   convertBase64ToSaveImage(base64: string): string {
