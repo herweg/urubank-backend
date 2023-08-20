@@ -53,8 +53,10 @@ export class UtilsController {
     if (req.readable) {
       const raw = await rawbody(req);
       const text = raw.toString().trim();
+      console.log(text);
       return text;
     } else {
+      console.log(data);
       return data;
     }
   }
