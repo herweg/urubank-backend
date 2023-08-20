@@ -1,28 +1,32 @@
-import * as fs from 'fs';
-import { v4 as uuid } from 'uuid';
 import { Controller, Post, Body, Put } from '@nestjs/common';
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
-import { Observable, of } from 'rxjs';
-import { IResponse } from 'src/domain/interfaces';
+import { Observable } from 'rxjs';
+import { IResponse } from '../../domain/interfaces';
 import { SumecDomainEntityBase } from '../../domain/entities';
 import {
+  SaveImageUtilsUseCase,
   GetDuesForCapitalSumecUseCase,
   GetPreApprovedSumecUseCase,
 } from '../../application/use-cases';
 import {
+  SaveImageUtilsCommand,
   GetDuesForCapitalSumecCommand,
   GetPreApprovedSumecCommand,
 } from '../commands';
 import {
+  SaveImageUtilsResponse,
   GetDuesForCapitalSumecResponse,
   GetPreApprovedSumecResponse,
 } from '../responses';
-import { SumecService } from '../services';
+import { UtilsService, SumecService } from '../services';
 
 @ApiTags('Utils')
 @Controller('/utils')
 export class UtilsController {
-  constructor(private readonly sumecService: SumecService) {}
+  constructor(
+    private readonly utilsService: UtilsService,
+    private readonly sumecService: SumecService,
+  ) {}
 
   @ApiResponse({ type: GetDuesForCapitalSumecResponse })
   @Post('/sumec/getduesforcapital')
@@ -42,19 +46,12 @@ export class UtilsController {
     return useCase.execute(command);
   }
 
+  @ApiResponse({ type: SaveImageUtilsResponse })
   @Put('/images/save')
-  saveImage(@Body('data') data): Observable<string> {
-    return of(this.convertBase64ToSaveImage(data));
-  }
-
-  convertBase64ToSaveImage(base64: string): string {
-    const buff = Buffer.from(base64, 'base64');
-    const dir = './assets/images/';
-    const name = uuid() + '.jpg';
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-    fs.writeFileSync(dir + name, buff);
-    return name;
+  saveImage(
+    @Body() command: SaveImageUtilsCommand,
+  ): Observable<IResponse<string>> {
+    const useCase = new SaveImageUtilsUseCase(this.utilsService);
+    return useCase.execute(command);
   }
 }

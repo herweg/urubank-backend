@@ -16,6 +16,7 @@ export * from './findbyid.lead.command.interface';
 export * from './findbyid.user.command.interface';
 export * from './getduesforcapital.sumec.command.interface';
 export * from './getpreapproved.sumec.command.interface';
+export * from './save.image.utils.command.interface';
 export * from './update.campaign.command.interface';
 export * from './update.financier.command.interface';
 export * from './update.lead.command.interface';

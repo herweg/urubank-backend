@@ -19,6 +19,7 @@ export * from './findbyid-lead.use-case';
 export * from './findbyid-user.use-case';
 export * from './getduesforcapital-sumec.use-case';
 export * from './getpreapproved-sumec.use-case';
+export * from './saveimage-utils.use-case';
 export * from './update-campaign.use-case';
 export * from './update-financier.use-case';
 export * from './update-lead.use-case';

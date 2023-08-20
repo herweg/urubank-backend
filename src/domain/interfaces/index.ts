@@ -14,3 +14,4 @@ export * from './sumec.service.interface';
 export * from './user.entity.interface';
 export * from './user.repository.interface';
 export * from './user.service.interface';
+export * from './utils.service.interface';

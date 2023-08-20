@@ -19,6 +19,7 @@ export * from './findbyid.lead.response';
 export * from './findbyid.user.response';
 export * from './getduesforcapital.sumec.response';
 export * from './getpreapproved.sumec.response';
+export * from './save.image.utils.response';
 export * from './update.campaign.response';
 export * from './update.financier.response';
 export * from './update.lead.response';
