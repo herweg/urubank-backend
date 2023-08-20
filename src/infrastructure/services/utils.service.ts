@@ -1,7 +1,7 @@
 import * as fs from 'fs';
+import sharp from 'sharp';
 import { Observable, of } from 'rxjs';
 import { v4 as uuid } from 'uuid';
-import { pngToJpeg } from 'png-to-jpeg';
 import { Injectable } from '@nestjs/common';
 import { IUtilsService } from '../../domain/interfaces';
 
@@ -22,11 +22,25 @@ export class UtilsService implements IUtilsService {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
-    if (type == 'png')
-      pngToJpeg({ quality: 80 })(buff).then((output: Buffer) =>
-        fs.writeFileSync(dir + name, output),
-      );
-    if (type == 'jpg' || 'jpeg') fs.writeFileSync(dir + name, buff);
+    if (type == 'png') {
+      sharp(buff)
+        .jpeg({ quality: 80 })
+        .resize(1280, 720, {
+          fit: sharp.fit.inside,
+          withoutEnlargement: true,
+        })
+        .toBuffer()
+        .then((output) => fs.writeFileSync(dir + name, output));
+    }
+    if (type == 'jpg' || 'jpeg') {
+      sharp(buff)
+        .resize(1280, 720, {
+          fit: sharp.fit.inside,
+          withoutEnlargement: true,
+        })
+        .toBuffer()
+        .then((output) => fs.writeFileSync(dir + name, output));
+    }
     return of(name);
   }
 }
