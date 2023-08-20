@@ -1,5 +1,11 @@
-import { Controller, Post, Body } from '@nestjs/common';
-import { ApiTags, ApiResponse } from '@nestjs/swagger';
+import * as rawbody from 'raw-body';
+import { Controller, Post, Body, Req } from '@nestjs/common';
+import {
+  ApiTags,
+  ApiResponse,
+  ApiProduces,
+  ApiConsumes,
+} from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 import { IResponse } from 'src/domain/interfaces';
 import { SumecDomainEntityBase } from '../../domain/entities';
@@ -38,5 +44,18 @@ export class UtilsController {
   ): Observable<IResponse<SumecDomainEntityBase>> {
     const useCase = new GetPreApprovedSumecUseCase(this.sumecService);
     return useCase.execute(command);
+  }
+
+  @ApiConsumes('text/plain')
+  @ApiProduces('text/plain')
+  @Post('/logger')
+  async logger(@Body() data, @Req() req): Promise<string> {
+    if (req.readable) {
+      const raw = await rawbody(req);
+      const text = raw.toString().trim();
+      return text;
+    } else {
+      return data;
+    }
   }
 }
