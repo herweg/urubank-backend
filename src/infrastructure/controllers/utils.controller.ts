@@ -1,5 +1,7 @@
 import * as rawbody from 'raw-body';
-import { Controller, Post, Body, Req } from '@nestjs/common';
+import * as fs from 'fs';
+import { v4 as uuid } from 'uuid';
+import { Controller, Post, Body, Req, Put } from '@nestjs/common';
 import {
   ApiTags,
   ApiResponse,
@@ -48,16 +50,25 @@ export class UtilsController {
 
   @ApiConsumes('text/plain')
   @ApiProduces('text/plain')
-  @Post('/logger')
-  async logger(@Body() data, @Req() req): Promise<string> {
+  @Put('/images/save')
+  async saveImage(@Body() data, @Req() req): Promise<string> {
     if (req.readable) {
       const raw = await rawbody(req);
       const text = raw.toString().trim();
-      console.log(text);
-      return text;
+      return this.convertBase64ToSaveImage(text);
     } else {
-      console.log(data);
-      return data;
+      return this.convertBase64ToSaveImage(data);
     }
+  }
+
+  convertBase64ToSaveImage(base64: string): string {
+    const buff = Buffer.from(base64, 'base64');
+    const dir = './assets/images/';
+    const name = uuid() + '.jpg';
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+    fs.writeFileSync(dir + name, buff);
+    return name;
   }
 }

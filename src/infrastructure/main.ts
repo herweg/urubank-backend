@@ -1,12 +1,17 @@
 import * as dotenv from 'dotenv';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { join } from 'path';
 import { from } from 'rxjs';
 import { AppModule } from './app.module';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   dotenv.config({ path: 'environments/.env.' + process.env.NODE_ENV });
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.useStaticAssets(join(__dirname, '..', 'assets/images'), {
+    prefix: '/assets/images/',
+  });
   app.enableCors();
 
   const swagger = new DocumentBuilder()
@@ -14,7 +19,6 @@ async function bootstrap() {
     .setDescription('Service to manage users, financiers, campaigns and leads')
     .setVersion('1')
     .build();
-
   const document = SwaggerModule.createDocument(app, swagger);
   SwaggerModule.setup('', app, document, {
     swaggerOptions: { defaultModelsExpandDepth: -1 },
