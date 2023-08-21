@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { LeadMongoEntity } from '../models';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -83,6 +84,28 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         if (entity == null) {
           return of(false);
         }
+        const dir = './assets/images/';
+        const url = 'https://api.going.uy/assets/images/';
+        const urlDoc = entity.documentPhoto
+          ? entity.documentPhoto.replace(url, '')
+          : null;
+        const urlDocBack = entity.documentBackPhoto
+          ? entity.documentBackPhoto.replace(url, '')
+          : null;
+        const urlFront = entity.frontPhoto
+          ? entity.frontPhoto.replace(url, '')
+          : null;
+        const urlInvoice = entity.invoicePhoto
+          ? entity.invoicePhoto.replace(url, '')
+          : null;
+        if (urlDoc != null && fs.existsSync(dir + urlDoc))
+          fs.rmSync(dir + urlDoc);
+        if (urlDocBack != null && fs.existsSync(dir + urlDocBack))
+          fs.rmSync(dir + urlDocBack);
+        if (urlFront != null && fs.existsSync(dir + urlFront))
+          fs.rmSync(dir + urlFront);
+        if (urlInvoice != null && fs.existsSync(dir + urlInvoice))
+          fs.rmSync(dir + urlInvoice);
         return from(this.repository.delete({ id: id })).pipe(
           map((deleteResult) => deleteResult.affected > 0),
         );
