@@ -22,49 +22,49 @@ export class FinancierDomainEntityBase implements IFinancierEntity {
    * @type {string}
    * @memberof FinancierDomainEntityBase
    */
-  brandName: string;
+  brandName?: string;
   /**
    * Phones of the financier.
    *
    * @type {string[]}
    * @memberof FinancierDomainEntityBase
    */
-  phones: string[];
+  phones?: string[];
   /**
    * Emails of the financier.
    *
    * @type {string[]}
    * @memberof FinancierDomainEntityBase
    */
-  emails: string[];
+  emails?: string[];
   /**
    * Country of the financier.
    *
    * @type {string}
    * @memberof FinancierDomainEntityBase
    */
-  country: string;
+  country?: string;
   /**
    * State of the financier.
    *
    * @type {string}
    * @memberof FinancierDomainEntityBase
    */
-  state: string;
+  state?: string;
   /**
    * City of the financier.
    *
    * @type {string}
    * @memberof FinancierDomainEntityBase
    */
-  city: string;
+  city?: string;
   /**
    * Court address of the financier.
    *
    * @type {string}
    * @memberof FinancierDomainEntityBase
    */
-  courtAddress: string;
+  courtAddress?: string;
 
   /**
    * The constructor function is a function that is called when a new instance of the class is created

@@ -5,82 +5,89 @@ export interface IUpdateLeadCommand {
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  id?: string;
+  id: string;
   /**
    * Campaign UUID of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  campaignId: string;
+  campaignId?: string;
   /**
    * User UUID of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  userId: string;
+  userId?: string;
   /**
    * Status of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  status: string;
+  status?: string;
   /**
    * Amount of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  amount: string;
+  amount?: string;
   /**
    * Final amount of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  finalAmount: string;
+  finalAmount?: string;
   /**
    * Quotas of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  quotas: string;
+  quotas?: string;
   /**
    * Quotas amount of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  quotasAmount: string;
+  quotasAmount?: string;
   /**
    * Clearing of the lead.
    *
    * @type {boolean}
    * @memberof IUpdateLeadCommand
    */
-  clearing: boolean;
+  clearing?: boolean;
   /**
    * Document photo of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  documentPhoto: string;
+  documentPhoto?: string;
+  /**
+   * Document back photo of the lead.
+   *
+   * @type {string}
+   * @memberof IUpdateLeadCommand
+   */
+  documentBackPhoto?: string;
   /**
    * Front photo of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  frontPhoto: string;
+  frontPhoto?: string;
   /**
    * Invoice photo of the lead.
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
    */
-  invoicePhoto: string;
+  invoicePhoto?: string;
 }

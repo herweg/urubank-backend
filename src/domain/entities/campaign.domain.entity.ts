@@ -23,21 +23,21 @@ export class CampaignDomainEntityBase implements ICampaignEntity {
    * @type {string}
    * @memberof CampaignDomainEntityBase
    */
-  financerId: string | FinancierDomainEntityBase;
+  financerId?: string | FinancierDomainEntityBase;
   /**
    * Brand name of the campaign.
    *
    * @type {string}
    * @memberof CampaignDomainEntityBase
    */
-  brandName: string;
+  brandName?: string;
   /**
    * Phone of the campaign.
    *
    * @type {string}
    * @memberof CampaignDomainEntityBase
    */
-  phone: string;
+  phone?: string;
 
   /**
    * The constructor function is a function that is called when a new instance of the class is created

@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IUpdateCampaignCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
-import { IsString, IsUUID } from 'class-validator';
+import { IsOptional, IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
 export class UpdateCampaignCommand implements IUpdateCampaignCommand {
@@ -20,6 +20,7 @@ export class UpdateCampaignCommand implements IUpdateCampaignCommand {
   id: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -31,9 +32,10 @@ export class UpdateCampaignCommand implements IUpdateCampaignCommand {
    * @type {string}
    * @memberof UpdateCampaignCommand
    */
-  financerId: string;
+  financerId?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -44,9 +46,10 @@ export class UpdateCampaignCommand implements IUpdateCampaignCommand {
    * @type {string}
    * @memberof UpdateCampaignCommand
    */
-  brandName: string;
+  brandName?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -57,5 +60,5 @@ export class UpdateCampaignCommand implements IUpdateCampaignCommand {
    * @type {string}
    * @memberof UpdateCampaignCommand
    */
-  phone: string;
+  phone?: string;
 }

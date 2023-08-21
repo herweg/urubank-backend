@@ -42,6 +42,9 @@ export class LeadMongoEntity extends LeadDomainEntityBase {
   documentPhoto: string;
 
   @Column()
+  documentBackPhoto: string;
+
+  @Column()
   frontPhoto: string;
 
   @Column()

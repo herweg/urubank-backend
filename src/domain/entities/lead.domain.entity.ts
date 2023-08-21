@@ -23,77 +23,84 @@ export class LeadDomainEntityBase implements ILeadEntity {
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  campaignId: string | CampaignDomainEntityBase;
+  campaignId?: string | CampaignDomainEntityBase;
   /**
    * User UUID of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  userId: string | UserDomainEntityBase;
+  userId?: string | UserDomainEntityBase;
   /**
    * Status of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  status: string;
+  status?: string;
   /**
    * Amount of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  amount: string;
+  amount?: string;
   /**
    * Final amount of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  finalAmount: string;
+  finalAmount?: string;
   /**
    * Quotas of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  quotas: string;
+  quotas?: string;
   /**
    * Quotas amount of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  quotasAmount: string;
+  quotasAmount?: string;
   /**
    * Clearing of the lead.
    *
    * @type {boolean}
    * @memberof LeadDomainEntityBase
    */
-  clearing: boolean;
+  clearing?: boolean;
   /**
    * Document photo of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  documentPhoto: string;
+  documentPhoto?: string;
+  /**
+   * Document back photo of the lead.
+   *
+   * @type {string}
+   * @memberof LeadDomainEntityBase
+   */
+  documentBackPhoto?: string;
   /**
    * Front photo of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  frontPhoto: string;
+  frontPhoto?: string;
   /**
    * Invoice photo of the lead.
    *
    * @type {string}
    * @memberof LeadDomainEntityBase
    */
-  invoicePhoto: string;
+  invoicePhoto?: string;
   /**
    * CreatedAt stamp of the lead.
    *
@@ -123,8 +130,10 @@ export class LeadDomainEntityBase implements ILeadEntity {
     if (_data?.quotas) this.quotas = _data.quotas;
     if (_data?.quotasAmount) this.quotasAmount = _data.quotasAmount;
     if (_data?.status) this.status = _data.status;
-    if (_data?.clearing != null) this.clearing = _data.clearing;
+    if (_data?.clearing != undefined) this.clearing = _data.clearing;
     if (_data?.documentPhoto) this.documentPhoto = _data.documentPhoto;
+    if (_data?.documentBackPhoto)
+      this.documentBackPhoto = _data.documentBackPhoto;
     if (_data?.frontPhoto) this.frontPhoto = _data.frontPhoto;
     if (_data?.invoicePhoto) this.invoicePhoto = _data.invoicePhoto;
     if (_data?.createdAt) this.createdAt = _data.createdAt;

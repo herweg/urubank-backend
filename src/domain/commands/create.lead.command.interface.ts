@@ -63,6 +63,13 @@ export interface ICreateLeadCommand {
    */
   documentPhoto: string;
   /**
+   * Document back photo of the lead.
+   *
+   * @type {string}
+   * @memberof ICreateLeadCommand
+   */
+  documentBackPhoto: string;
+  /**
    * Front photo of the lead.
    *
    * @type {string}

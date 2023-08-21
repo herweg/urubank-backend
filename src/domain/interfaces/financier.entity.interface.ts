@@ -18,47 +18,47 @@ export interface IFinancierEntity {
    * @type {string}
    * @memberof IFinancierEntity
    */
-  brandName: string;
+  brandName?: string;
   /**
    * Phones of the financier.
    *
    * @type {string[]}
    * @memberof IFinancierEntity
    */
-  phones: string[];
+  phones?: string[];
   /**
    * Emails of the financier.
    *
    * @type {string[]}
    * @memberof IFinancierEntity
    */
-  emails: string[];
+  emails?: string[];
   /**
    * Country of the financier.
    *
    * @type {string}
    * @memberof IFinancierEntity
    */
-  country: string;
+  country?: string;
   /**
    * State of the financier.
    *
    * @type {string}
    * @memberof IFinancierEntity
    */
-  state: string;
+  state?: string;
   /**
    * City of the financier.
    *
    * @type {string}
    * @memberof IFinancierEntity
    */
-  city: string;
+  city?: string;
   /**
    * Court address of the financier.
    *
    * @type {string}
    * @memberof IFinancierEntity
    */
-  courtAddress: string;
+  courtAddress?: string;
 }

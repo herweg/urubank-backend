@@ -20,19 +20,19 @@ export interface ICampaignEntity {
    * @type {string}
    * @memberof ICampaignEntity
    */
-  financerId: string | IFinancierEntity;
+  financerId?: string | IFinancierEntity;
   /**
    * Brand name of the campaign.
    *
    * @type {string}
    * @memberof ICampaignEntity
    */
-  brandName: string;
+  brandName?: string;
   /**
    * Phone of the campaign.
    *
    * @type {string}
    * @memberof ICampaignEntity
    */
-  phone: string;
+  phone?: string;
 }

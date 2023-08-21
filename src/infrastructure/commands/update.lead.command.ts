@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IUpdateLeadCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
-import { IsBoolean, IsString, IsUUID } from 'class-validator';
+import { IsBoolean, IsOptional, IsString, IsUUID } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
 export class UpdateLeadCommand implements IUpdateLeadCommand {
@@ -20,6 +20,7 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
   id: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -31,9 +32,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  campaignId: string;
+  campaignId?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -45,9 +47,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  userId: string;
+  userId?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -58,9 +61,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  status: string;
+  status?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -71,9 +75,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  amount: string;
+  amount?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -84,9 +89,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  finalAmount: string;
+  finalAmount?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -97,9 +103,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  quotas: string;
+  quotas?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -110,9 +117,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof CreateLeadCommand
    */
-  quotasAmount: string;
+  quotasAmount?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsBoolean()
   /**
    * Clearing of the lead.
@@ -120,9 +128,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {boolean}
    * @memberof UpdateLeadCommand
    */
-  clearing: boolean;
+  clearing?: boolean;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -133,9 +142,24 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  documentPhoto: string;
+  documentPhoto?: string;
 
   @ApiProperty()
+  @IsOptional()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
+   * Document back photo of the lead.
+   *
+   * @type {string}
+   * @memberof UpdateLeadCommand
+   */
+  documentBackPhoto?: string;
+
+  @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -146,9 +170,10 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  frontPhoto: string;
+  frontPhoto?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -159,5 +184,5 @@ export class UpdateLeadCommand implements IUpdateLeadCommand {
    * @type {string}
    * @memberof UpdateLeadCommand
    */
-  invoicePhoto: string;
+  invoicePhoto?: string;
 }

@@ -18,77 +18,77 @@ export interface IUserEntity {
    * @type {string}
    * @memberof IUserEntity
    */
-  fullName: string;
+  fullName?: string;
   /**
    * Phone of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  phone: string;
+  phone?: string;
   /**
    * Document of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  document: string;
+  document?: string;
   /**
    * Email of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  email: string;
+  email?: string;
   /**
    * Age of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  age: string;
+  age?: string;
   /**
    * Salary of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  salary: string;
+  salary?: string;
   /**
    * Country of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  country: string;
+  country?: string;
   /**
    * State of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  state: string;
+  state?: string;
   /**
    * City of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  city: string;
+  city?: string;
   /**
    * Address of the user.
    *
    * @type {string}
    * @memberof IUserEntity
    */
-  address: string;
+  address?: string;
   /**
    * Origin of the user.
    *
    * @type {string[]}
    * @memberof IUserEntity
    */
-  origin: string[];
+  origin?: string[];
   /**
    * CreatedAt stamp of the user.
    *

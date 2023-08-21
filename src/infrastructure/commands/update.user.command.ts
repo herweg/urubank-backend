@@ -30,7 +30,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  fullName: string;
+  fullName?: string;
 
   @ApiProperty()
   @IsString()
@@ -43,7 +43,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  phone: string;
+  phone?: string;
 
   @ApiProperty()
   @IsString()
@@ -56,7 +56,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  document: string;
+  document?: string;
 
   @ApiProperty()
   @IsString()
@@ -69,7 +69,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  email: string;
+  email?: string;
 
   @ApiProperty()
   @IsString()
@@ -82,7 +82,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  age: string;
+  age?: string;
 
   @ApiProperty()
   @IsString()
@@ -95,7 +95,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  salary: string;
+  salary?: string;
 
   @ApiProperty()
   @IsString()
@@ -108,7 +108,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  country: string;
+  country?: string;
 
   @ApiProperty()
   @IsString()
@@ -121,7 +121,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  state: string;
+  state?: string;
 
   @ApiProperty()
   @IsString()
@@ -134,7 +134,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  city: string;
+  city?: string;
 
   @ApiProperty()
   @IsString()
@@ -147,7 +147,7 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string}
    * @memberof UpdateUserCommand
    */
-  address: string;
+  address?: string;
 
   @ApiProperty()
   @IsArray()
@@ -157,5 +157,5 @@ export class UpdateUserCommand implements IUpdateUserCommand {
    * @type {string[]}
    * @memberof UpdateUserCommand
    */
-  origin: string[];
+  origin?: string[];
 }

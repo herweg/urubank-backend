@@ -5,54 +5,54 @@ export interface IUpdateFinancierCommand {
    * @type {string}
    * @memberof IUpdateFinancierCommand
    */
-  id?: string;
+  id: string;
   /**
    * Brand name of the financier.
    *
    * @type {string}
    * @memberof IUpdateFinancierCommand
    */
-  brandName: string;
+  brandName?: string;
   /**
    * Phones of the financier.
    *
    * @type {string[]}
    * @memberof IUpdateFinancierCommand
    */
-  phones: string[];
+  phones?: string[];
   /**
    * Emails of the financier.
    *
    * @type {string[]}
    * @memberof IUpdateFinancierCommand
    */
-  emails: string[];
+  emails?: string[];
   /**
    * Country of the financier.
    *
    * @type {string}
    * @memberof IUpdateFinancierCommand
    */
-  country: string;
+  country?: string;
   /**
    * State of the financier.
    *
    * @type {string}
    * @memberof IUpdateFinancierCommand
    */
-  state: string;
+  state?: string;
   /**
    * City of the financier.
    *
    * @type {string}
    * @memberof IUpdateFinancierCommand
    */
-  city: string;
+  city?: string;
   /**
    * Court address of the financier.
    *
    * @type {string}
    * @memberof IUpdateFinancierCommand
    */
-  courtAddress: string;
+  courtAddress?: string;
 }

@@ -5,26 +5,26 @@ export interface IUpdateCampaignCommand {
    * @type {string}
    * @memberof IUpdateCampaignCommand
    */
-  id?: string;
+  id: string;
   /**
    * Financer UUID of the campaign.
    *
    * @type {string}
    * @memberof IUpdateCampaignCommand
    */
-  financerId: string;
+  financerId?: string;
   /**
    * Brand name of the campaign.
    *
    * @type {string}
    * @memberof IUpdateCampaignCommand
    */
-  brandName: string;
+  brandName?: string;
   /**
    * Phone of the campaign.
    *
    * @type {string}
    * @memberof IUpdateCampaignCommand
    */
-  phone: string;
+  phone?: string;
 }

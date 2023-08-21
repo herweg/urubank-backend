@@ -20,77 +20,84 @@ export interface ILeadEntity {
    * @type {string}
    * @memberof ILeadEntity
    */
-  campaignId: string | ICampaignEntity;
+  campaignId?: string | ICampaignEntity;
   /**
    * User UUID of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  userId: string | IUserEntity;
+  userId?: string | IUserEntity;
   /**
    * Status of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  status: string;
+  status?: string;
   /**
    * Amount of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  amount: string;
+  amount?: string;
   /**
    * Final amount of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  finalAmount: string;
+  finalAmount?: string;
   /**
    * Quotas of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  quotas: string;
+  quotas?: string;
   /**
    * Quotas amount of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  quotasAmount: string;
+  quotasAmount?: string;
   /**
    * Clearing of the lead.
    *
    * @type {boolean}
    * @memberof ILeadEntity
    */
-  clearing: boolean;
+  clearing?: boolean;
   /**
    * Document photo of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  documentPhoto: string;
+  documentPhoto?: string;
+  /**
+   * Document back photo of the lead.
+   *
+   * @type {string}
+   * @memberof ILeadEntity
+   */
+  documentBackPhoto?: string;
   /**
    * Front photo of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  frontPhoto: string;
+  frontPhoto?: string;
   /**
    * Invoice photo of the lead.
    *
    * @type {string}
    * @memberof ILeadEntity
    */
-  invoicePhoto: string;
+  invoicePhoto?: string;
   /**
    * CreatedAt stamp of the lead.
    *

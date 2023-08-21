@@ -22,77 +22,77 @@ export class UserDomainEntityBase implements IUserEntity {
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  fullName: string;
+  fullName?: string;
   /**
    * Phone of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  phone: string;
+  phone?: string;
   /**
    * Document of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  document: string;
+  document?: string;
   /**
    * Email of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  email: string;
+  email?: string;
   /**
    * Age of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  age: string;
+  age?: string;
   /**
    * Salary of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  salary: string;
+  salary?: string;
   /**
    * Country of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  country: string;
+  country?: string;
   /**
    * State of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  state: string;
+  state?: string;
   /**
    * City of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  city: string;
+  city?: string;
   /**
    * Address of the user.
    *
    * @type {string}
    * @memberof UserDomainEntityBase
    */
-  address: string;
+  address?: string;
   /**
    * Origin of the user.
    *
    * @type {string[]}
    * @memberof UserDomainEntityBase
    */
-  origin: string[];
+  origin?: string[];
   /**
    * CreatedAt stamp of the user.
    *

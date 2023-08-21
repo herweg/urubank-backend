@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IUpdateFinancierCommand } from '../../domain/commands';
 import { IsNotBlankString, IsNotEmptyString } from '@nestjsi/class-validator';
-import { IsString, IsArray, IsUUID } from 'class-validator';
+import { IsString, IsArray, IsUUID, IsOptional } from 'class-validator';
 import { IsSingleLine } from '@nestjsi/class-validator/is/is-single-line';
 
 export class UpdateFinancierCommand implements IUpdateFinancierCommand {
@@ -20,6 +20,7 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
   id: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -30,9 +31,10 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string}
    * @memberof UpdateFinancierCommand
    */
-  brandName: string;
+  brandName?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsArray()
   /**
    * Phones of the financier.
@@ -40,9 +42,10 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string[]}
    * @memberof UpdateFinancierCommand
    */
-  phones: string[];
+  phones?: string[];
 
   @ApiProperty()
+  @IsOptional()
   @IsArray()
   /**
    * Emails of the financier.
@@ -50,9 +53,10 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string[]}
    * @memberof UpdateFinancierCommand
    */
-  emails: string[];
+  emails?: string[];
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -63,9 +67,10 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string}
    * @memberof UpdateFinancierCommand
    */
-  country: string;
+  country?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -76,9 +81,10 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string}
    * @memberof UpdateFinancierCommand
    */
-  state: string;
+  state?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -89,9 +95,10 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string}
    * @memberof UpdateFinancierCommand
    */
-  city: string;
+  city?: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotBlankString()
   @IsNotEmptyString()
@@ -102,5 +109,5 @@ export class UpdateFinancierCommand implements IUpdateFinancierCommand {
    * @type {string}
    * @memberof UpdateFinancierCommand
    */
-  courtAddress: string;
+  courtAddress?: string;
 }

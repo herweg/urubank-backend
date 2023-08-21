@@ -127,6 +127,19 @@ export class CreateLeadCommand implements ICreateLeadCommand {
   @IsNotEmptyString()
   @IsSingleLine()
   /**
+   * Document back photo of the lead.
+   *
+   * @type {string}
+   * @memberof CreateLeadCommand
+   */
+  documentBackPhoto: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotBlankString()
+  @IsNotEmptyString()
+  @IsSingleLine()
+  /**
    * Front photo of the lead.
    *
    * @type {string}
