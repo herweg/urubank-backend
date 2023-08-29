@@ -37,7 +37,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -66,7 +66,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -117,7 +117,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -139,7 +139,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -163,7 +163,7 @@ export class UsersMongoRepository implements IUsersRepository<UserMongoEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );

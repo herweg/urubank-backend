@@ -33,7 +33,7 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
     return from(this.repository.save(entity)).pipe(
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -61,7 +61,7 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -109,7 +109,7 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -130,7 +130,7 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
@@ -153,7 +153,7 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
       }),
       catchError((error: Error) => {
         const success = { success: false }
-        error = Object.assign({}, error, success);
+        error = {...error, ...success};
         throw error;
       }),
     );
