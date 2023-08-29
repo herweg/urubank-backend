@@ -37,6 +37,8 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -64,6 +66,8 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -141,6 +145,8 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
           );
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -161,6 +167,8 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -190,6 +198,8 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         });
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );

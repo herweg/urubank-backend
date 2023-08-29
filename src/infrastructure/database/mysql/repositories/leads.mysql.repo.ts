@@ -33,6 +33,8 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
   create(entity: LeadDomainEntityBase): Observable<LeadMysqlEntity> {
     return from(this.repository.save(entity)).pipe(
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -59,6 +61,8 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -131,6 +135,8 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
         );
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -150,6 +156,8 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -174,6 +182,8 @@ export class LeadsMysqlRepository implements ILeadsRepository<LeadMysqlEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );

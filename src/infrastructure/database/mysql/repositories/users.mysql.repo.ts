@@ -32,6 +32,8 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
   create(entity: UserDomainEntityBase): Observable<UserMysqlEntity> {
     return from(this.repository.save(entity)).pipe(
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -58,6 +60,8 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -104,6 +108,8 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -123,6 +129,8 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -144,6 +152,8 @@ export class UsersMysqlRepository implements IUsersRepository<UserMysqlEntity> {
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );

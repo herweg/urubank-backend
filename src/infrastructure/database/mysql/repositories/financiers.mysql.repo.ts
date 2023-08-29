@@ -34,6 +34,8 @@ export class FinanciersMysqlRepository
   create(entity: FinancierDomainEntityBase): Observable<FinancierMysqlEntity> {
     return from(this.repository.save(entity)).pipe(
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -60,6 +62,8 @@ export class FinanciersMysqlRepository
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -106,6 +110,8 @@ export class FinanciersMysqlRepository
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
@@ -127,6 +133,8 @@ export class FinanciersMysqlRepository
         return value;
       }),
       catchError((error: Error) => {
+        const success = { success: false }
+        error = Object.assign({}, error, success);
         throw error;
       }),
     );
