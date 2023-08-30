@@ -37,8 +37,6 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         return value;
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -53,9 +51,10 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
     return from(this.repository.findOneBy({ id: entity.id })).pipe(
       tap((value) => {
         if (value == null) {
-          throw new NotFoundException(
-            `Error: not found lead with id: ${entity.id}`,
-          );
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found lead with id: ${entity.id}`,
+          });
         }
       }),
       map((value) => {
@@ -66,8 +65,6 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -131,7 +128,10 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
     return from(this.repository.find()).pipe(
       map((value) => {
         if (value.length == 0) {
-          throw new NotFoundException(`Error: not found leads`);
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found leads`,
+          });
         }
         return value
           .map((item) => {
@@ -145,8 +145,6 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
           );
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -161,14 +159,15 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
     return from(this.repository.findOneBy({ id: id })).pipe(
       map((value) => {
         if (value == null) {
-          throw new NotFoundException(`Error: not found lead with id: ${id}`);
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found lead with id: ${id}`,
+          });
         }
         delete value._id;
         return value;
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -188,9 +187,10 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
       }),
       map((value) => {
         if (value.length == 0) {
-          throw new NotFoundException(
-            `Error: not found active lead with userId: ${userId}`,
-          );
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found active lead with userId: ${userId}`,
+          });
         }
         return value.map((item) => {
           delete item._id;
@@ -198,8 +198,6 @@ export class LeadsMongoRepository implements ILeadsRepository<LeadMongoEntity> {
         });
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );

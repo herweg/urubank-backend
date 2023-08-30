@@ -34,8 +34,6 @@ export class CampaignsMysqlRepository
   create(entity: CampaignDomainEntityBase): Observable<CampaignMysqlEntity> {
     return from(this.repository.save(entity)).pipe(
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -50,9 +48,10 @@ export class CampaignsMysqlRepository
     return from(this.repository.findOneBy({ id: entity.id })).pipe(
       tap((value) => {
         if (value == null) {
-          throw new NotFoundException(
-            `Error: not found campaign with id: ${entity.id}`,
-          );
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found campaign with id: ${entity.id}`,
+          });
         }
       }),
       map((value) => {
@@ -62,8 +61,6 @@ export class CampaignsMysqlRepository
         return { ...value, ...entity };
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -105,13 +102,14 @@ export class CampaignsMysqlRepository
     return from(this.repository.find()).pipe(
       map((value) => {
         if (value.length == 0) {
-          throw new NotFoundException(`Error: not found campaigns`);
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found campaigns`,
+          });
         }
         return value;
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
@@ -126,15 +124,14 @@ export class CampaignsMysqlRepository
     return from(this.repository.findOneBy({ id: id })).pipe(
       map((value) => {
         if (value == null) {
-          throw new NotFoundException(
-            `Error: not found campaign with id: ${id}`,
-          );
+          throw new NotFoundException({
+            success: false,
+            message: `Error: not found campaign with id: ${id}`,
+          });
         }
         return value;
       }),
       catchError((error: Error) => {
-        const success = { success: false }
-        error = {...error, ...success};
         throw error;
       }),
     );
