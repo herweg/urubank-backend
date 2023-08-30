@@ -25,6 +25,7 @@ export interface IUpdateLeadCommand {
    *
    * @type {string}
    * @memberof IUpdateLeadCommand
+   * PENDING / RESERVED / REJECTED / APPROVED / COMPLETED / INPROCESS
    */
   status?: string;
   /**
