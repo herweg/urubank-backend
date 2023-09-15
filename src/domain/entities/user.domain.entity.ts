@@ -115,6 +115,7 @@ export class UserDomainEntityBase implements IUserEntity {
     if (_data?.age) this.age = _data.age;
     if (_data?.salary) this.salary = _data.salary;
     if (_data?.country) this.country = _data.country;
+    if (_data?.state) this.state = _data.state;
     if (_data?.city) this.city = _data.city;
     if (_data?.address) this.address = _data.address;
     if (_data?.origin) this.origin = _data.origin;
