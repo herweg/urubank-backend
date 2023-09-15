@@ -13,12 +13,13 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'assets/images'), {
     prefix: '/assets/images/',
   });
-  app.enableCors({
-    origin: ['https://urubank.going.uy'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  });
+  app.enableCors();
+  //app.enableCors({
+  //  origin: ['https://urubank.going.uy'],
+  //  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  //  preflightContinue: false,
+  //  optionsSuccessStatus: 204,
+  //});
 
   const swagger = new DocumentBuilder()
     .setTitle('Urubank API')
