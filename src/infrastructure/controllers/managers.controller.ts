@@ -7,6 +7,7 @@ import {
   Post,
   Put,
   Query,
+  Req,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -94,5 +95,10 @@ export class ManagersController {
   ): Observable<IResponse<ManagerDomainEntityBase>> {
     const useCase = new FindByEmailManagerUseCase(this.managersService);
     return useCase.execute(command);
+  }
+
+  @Get('/findaccount')
+  findAccount(@Req() req: Request) {
+    return req.headers;
   }
 }
