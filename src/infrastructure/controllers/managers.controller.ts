@@ -98,7 +98,7 @@ export class ManagersController {
   }
 
   @Get('/findaccount')
-  findByAccount(@Req() req: Request) {
+  findAccount(@Req() req: Request) {
     return req.headers;
   }
 }
