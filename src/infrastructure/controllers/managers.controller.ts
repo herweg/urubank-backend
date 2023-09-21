@@ -12,7 +12,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Observable, catchError, from, map } from 'rxjs';
+import { Observable, catchError, from, map, of, switchMap } from 'rxjs';
 import { ManagersService } from '../services';
 import {
   CreateManagerUseCase,
@@ -104,7 +104,9 @@ export class ManagersController {
   }
 
   @Get('/findaccount')
-  findByAccount(@Req() req: Request) {
+  findByAccount(
+    @Req() req: Request,
+  ): Observable<IResponse<ManagerDomainEntityBase>> {
     console.log(req.headers['x-auth0-id']);
     console.log(req.headers);
     if (req.headers['x-auth0-id'] != null) {
@@ -122,7 +124,7 @@ export class ManagersController {
         },
       };
       return this.httpService.get(request.url, request).pipe(
-        map((value) => {
+        switchMap((value) => {
           if (value == null) {
             throw new NotFoundException({
               success: false,
