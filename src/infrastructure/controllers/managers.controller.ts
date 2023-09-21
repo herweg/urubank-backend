@@ -125,7 +125,8 @@ export class ManagersController {
         next: (value) => {
           const email = value.data['email'];
           console.log(email);
-          return this.findByEmail({ email: email });
+          const useCase = new FindByEmailManagerUseCase(this.managersService);
+          return useCase.execute({ email: email });
         },
         error: () => {
           throw new UnauthorizedException();
