@@ -7,6 +7,7 @@ import {
   Post,
   Put,
   Query,
+  Req,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -93,8 +94,10 @@ export class LeadsController {
   @ApiResponse({ type: FindAllByFinancierIdLeadResponse })
   @Put('/findallbyfinancierid')
   findAllByFinancierId(
+    @Req() req: Request,
     @Body() command: FindAllByFinancierIdLeadCommand,
   ): Observable<IResponse<LeadDomainEntityBase[]>> {
+    console.log(req.headers);
     const useCase = new FindAllByFinancierIdLeadUseCase(this.leadsService);
     return useCase.execute(command);
   }
