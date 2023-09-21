@@ -105,8 +105,7 @@ export class ManagersController {
 
   @Get('/findaccount')
   findByAccount(@Req() req: Request) {
-    console.log(req.headers.get('x-auth0-id'));
-    if (req.headers.get('x-auth0-id') != null) {
+    if (req.headers.has('x-auth0-id') == true) {
       const header = req.headers.get('x-auth0-id').split('|');
       const auth = header[0];
       const id = header[1];
