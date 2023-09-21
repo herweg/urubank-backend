@@ -12,7 +12,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Observable } from 'rxjs';
+import { Observable, catchError, from, map } from 'rxjs';
 import { ManagersService } from '../services';
 import {
   CreateManagerUseCase,
@@ -121,20 +121,33 @@ export class ManagersController {
           Authorization: 'Bearer ' + process.env.AUTHZERO_TOKEN,
         },
       };
-      let email = '';
-      this.httpService.get(request.url, request).subscribe({
-        next: (value) => {
-          email = value.data['email'];
-          console.log(email);
-        },
-        error: () => {
-          throw new UnauthorizedException();
-        },
-        complete: () => {
+      this.httpService.get(request.url, request).pipe(
+        map((value) => {
+          if (value == null) {
+            throw new NotFoundException({
+              success: false,
+              message: `Error: not found user`,
+            });
+          }
+          const email = value.data['email'];
           const useCase = new FindByEmailManagerUseCase(this.managersService);
-          return useCase.execute({ email: email });
-        },
-      });
+          return from(useCase.execute({ email: email }));
+        }),
+        catchError((error: Error) => {
+          throw error;
+        }),
+      );
+      //.subscribe({
+      //  next: (value) => {
+      //    const email = value.data['email'];
+      //    console.log(email);
+      //    const useCase = new FindByEmailManagerUseCase(this.managersService);
+      //    return useCase.execute({ email: email });
+      //  },
+      //  error: () => {
+      //    throw new UnauthorizedException();
+      //  },
+      //});
     } else throw new NotFoundException();
   }
 }
