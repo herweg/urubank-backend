@@ -9,6 +9,7 @@ import {
   Query,
   Req,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -106,17 +107,27 @@ export class ManagersController {
   findByAccount(@Req() req: Request) {
     console.log(req.headers.get('x-auth0-id'));
     if (req.headers.get('x-auth0-id') != null) {
-      const id = req.headers.get('x-auth0-id');
+      const header = req.headers.get('x-auth0-id').split('|');
+      const auth = header[0];
+      const id = header[1];
       const request = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: process.env.AUTHZERO_API_URL + '/api/v2/users/auth0%7C' + id,
+        url:
+          process.env.AUTHZERO_API_URL + '/api/v2/users/' + auth + '%7C' + id,
         headers: {
           Accept: 'application/json',
           Authorization: 'Bearer ' + process.env.AUTHZERO_TOKEN,
         },
       };
-      return this.httpService.get(request.url, request);
+      this.httpService.get(request.url, request).subscribe({
+        next: (value) => {
+          return this.findByEmail({ email: value.data['email'] });
+        },
+        error: () => {
+          throw new UnauthorizedException();
+        },
+      });
     } else throw new NotFoundException();
   }
 }

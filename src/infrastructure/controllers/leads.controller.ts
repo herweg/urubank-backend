@@ -97,7 +97,6 @@ export class LeadsController {
     @Req() req: Request,
     @Body() command: FindAllByFinancierIdLeadCommand,
   ): Observable<IResponse<LeadDomainEntityBase[]>> {
-    console.log(req.headers);
     const useCase = new FindAllByFinancierIdLeadUseCase(this.leadsService);
     return useCase.execute(command);
   }
