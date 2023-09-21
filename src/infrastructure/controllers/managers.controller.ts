@@ -121,15 +121,18 @@ export class ManagersController {
           Authorization: 'Bearer ' + process.env.AUTHZERO_TOKEN,
         },
       };
+      let email = '';
       this.httpService.get(request.url, request).subscribe({
         next: (value) => {
-          const email = value.data['email'];
+          email = value.data['email'];
           console.log(email);
-          const useCase = new FindByEmailManagerUseCase(this.managersService);
-          return useCase.execute({ email: email });
         },
         error: () => {
           throw new UnauthorizedException();
+        },
+        complete: () => {
+          const useCase = new FindByEmailManagerUseCase(this.managersService);
+          return useCase.execute({ email: email });
         },
       });
     } else throw new NotFoundException();
