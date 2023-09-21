@@ -107,8 +107,6 @@ export class ManagersController {
   findByAccount(
     @Req() req: Request,
   ): Observable<IResponse<ManagerDomainEntityBase>> {
-    console.log(req.headers['x-auth0-id']);
-    console.log(req.headers);
     if (req.headers['x-auth0-id'] != null) {
       const header = req.headers['x-auth0-id'].split('|');
       const auth = header[0];
@@ -139,17 +137,6 @@ export class ManagersController {
           throw error;
         }),
       );
-      //.subscribe({
-      //  next: (value) => {
-      //    const email = value.data['email'];
-      //    console.log(email);
-      //    const useCase = new FindByEmailManagerUseCase(this.managersService);
-      //    return useCase.execute({ email: email });
-      //  },
-      //  error: () => {
-      //    throw new UnauthorizedException();
-      //  },
-      //});
     } else throw new NotFoundException();
   }
 }
