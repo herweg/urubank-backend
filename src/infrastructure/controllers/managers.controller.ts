@@ -106,13 +106,11 @@ export class ManagersController {
   findByAccount(@Req() req: Request) {
     console.log(req.headers.get('x-auth0-id'));
     if (req.headers.get('x-auth0-id') != null) {
+      const id = req.headers.get('x-auth0-id');
       const request = {
         method: 'get',
         maxBodyLength: Infinity,
-        url:
-          process.env.AUTHZERO_API_URL +
-          '/api/v2/users/auth0%7C' +
-          '64666c65ad732ac86f5dc155',
+        url: process.env.AUTHZERO_API_URL + '/api/v2/users/auth0%7C' + id,
         headers: {
           Accept: 'application/json',
           Authorization: 'Bearer ' + process.env.AUTHZERO_TOKEN,
