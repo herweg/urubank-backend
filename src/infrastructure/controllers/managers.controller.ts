@@ -9,10 +9,9 @@ import {
   Query,
   Req,
   NotFoundException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Observable, catchError, from, map, of, switchMap } from 'rxjs';
+import { Observable, catchError, from, switchMap } from 'rxjs';
 import { ManagersService } from '../services';
 import {
   CreateManagerUseCase,
