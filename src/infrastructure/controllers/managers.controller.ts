@@ -123,8 +123,9 @@ export class ManagersController {
       };
       this.httpService.get(request.url, request).subscribe({
         next: (value) => {
-          console.log(value);
-          return this.findByEmail({ email: value.data['email'] });
+          const email = value.data['email'];
+          console.log(email);
+          return this.findByEmail({ email: email });
         },
         error: () => {
           throw new UnauthorizedException();
