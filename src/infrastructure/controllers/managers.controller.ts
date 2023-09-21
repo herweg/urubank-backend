@@ -8,6 +8,7 @@ import {
   Put,
   Query,
   Req,
+  NotFoundException,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -38,10 +39,14 @@ import {
 } from '../responses';
 import { IResponse } from '../../domain/interfaces';
 import { ManagerDomainEntityBase } from '../../domain/entities';
+import { HttpService } from '@nestjs/axios';
 @ApiTags('Managers')
 @Controller('/managers')
 export class ManagersController {
-  constructor(private readonly managersService: ManagersService) {}
+  constructor(
+    private readonly managersService: ManagersService,
+    private readonly httpService: HttpService,
+  ) {}
 
   @ApiResponse({ type: CreateManagerResponse })
   @Post('/create')
@@ -99,7 +104,21 @@ export class ManagersController {
 
   @Get('/findaccount')
   findByAccount(@Req() req: Request) {
-    console.log(req.headers);
-    return req.headers;
+    console.log(req.headers.get('x-auth0-id'));
+    if (req.headers.get('x-auth0-id') != null) {
+      const request = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url:
+          process.env.AUTHZERO_API_URL +
+          '/api/v2/users/auth0%7C' +
+          '64666c65ad732ac86f5dc155',
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'Bearer ' + process.env.AUTHZERO_TOKEN,
+        },
+      };
+      return this.httpService.get(request.url, request);
+    } else throw new NotFoundException();
   }
 }
