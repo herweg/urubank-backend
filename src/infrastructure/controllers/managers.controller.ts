@@ -121,7 +121,7 @@ export class ManagersController {
           Authorization: 'Bearer ' + process.env.AUTHZERO_TOKEN,
         },
       };
-      this.httpService.get(request.url, request).pipe(
+      return this.httpService.get(request.url, request).pipe(
         map((value) => {
           if (value == null) {
             throw new NotFoundException({
